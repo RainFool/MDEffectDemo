@@ -27,8 +27,8 @@ public class ImmersionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immersion);
 
-        mBtnTransparent = findViewById(R.id.btn_transparent);
-        mBtnWhite = findViewById(R.id.btn_white);
+        mBtnTransparent = (Button) findViewById(R.id.btn_transparent);
+        mBtnWhite = (Button) findViewById(R.id.btn_white);
 
         mBtnTransparent.setOnClickListener(new View.OnClickListener() {
             @Override
