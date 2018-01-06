@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app">
 
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".immersion.ImmersionActivity"></activity>
-        <activity android:name=".spannable.SpnnableTestActivity">
-
-        </activity>
+        <activity android:name=".immersion.ImmersionActivity" />
+        <activity android:name=".spannable.SpnnableTestActivity"></activity>
         <activity android:name=".notifycation.NotificationTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".coordinator.CoordinatorLayoutActivity"></activity>
     </application>
 
 </manifest>
