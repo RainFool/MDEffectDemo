@@ -13,15 +13,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".immersion.ImmersionActivity" />
-        <activity android:name=".spannable.SpnnableTestActivity"></activity>
+        <activity android:name=".spannable.SpnnableTestActivity" />
         <activity android:name=".notifycation.NotificationTestActivity">
+
+        </activity>
+        <activity android:name=".coordinator.CoordinatorLayoutActivity" />
+        <activity android:name=".popup.PopupTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".coordinator.CoordinatorLayoutActivity"></activity>
     </application>
 
 </manifest>
