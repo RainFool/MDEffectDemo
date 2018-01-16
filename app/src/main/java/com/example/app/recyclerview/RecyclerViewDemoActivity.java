@@ -3,6 +3,8 @@ package com.example.app.recyclerview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.app.R;
+
 public class RecyclerViewDemoActivity extends AppCompatActivity {
 
     @Override

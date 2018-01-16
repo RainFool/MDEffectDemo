@@ -14,11 +14,16 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".immersion.ImmersionActivity" />
         <activity android:name=".spannable.SpnnableTestActivity" />
-        <activity android:name=".notifycation.NotificationTestActivity">
-
-        </activity>
+        <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorLayoutActivity" />
         <activity android:name=".popup.PopupTestActivity">
+
+        </activity>
+        <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
+        <activity
+            android:name=".softinput.SoftInputTestActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
