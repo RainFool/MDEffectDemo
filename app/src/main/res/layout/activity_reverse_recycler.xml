@@ -6,6 +6,27 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_reverse"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/input_bar"
+        android:layout_centerInParent="true" />
+
+    <EditText
+        android:id="@+id/input_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/btn_action1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button1" />
+
+    <Button
+        android:id="@+id/btn_action2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="button2" />
 
 </RelativeLayout>

@@ -28,11 +28,6 @@ public class SimpleNumberAdapter extends RecyclerView.Adapter<SimpleNumberAdapte
         Log.d(TAG, "onCreateViewHolder: sub");
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_recycler_demo_sub, parent, false);
-        try {
-            Thread.sleep(40);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new SimpleNumberViewHolder(view);
     }
 
