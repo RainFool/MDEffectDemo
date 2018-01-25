@@ -16,14 +16,14 @@ import java.util.List;
  * @author rainfool
  * @date 2018/1/16
  */
-public class SimpleNumberAdapter extends RecyclerView.Adapter<SimpleNumberAdapter.SimpleNumberViewHolder> {
+public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.SimpleNumberViewHolder> {
 
     private static final String TAG = "SimpleNumberAdapter";
 
-    private int count = 5;
+    private List<String> mDataList;
 
-    public SimpleNumberAdapter(int count) {
-        this.count = count;
+    public SimpleStringAdapter(List<String> mDataList) {
+        this.mDataList = mDataList;
     }
 
     @Override
@@ -37,13 +37,13 @@ public class SimpleNumberAdapter extends RecyclerView.Adapter<SimpleNumberAdapte
     @Override
     public void onBindViewHolder(SimpleNumberViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: sub" + position);
-        holder.setNum(position);
+        holder.setString(mDataList.get(position));
     }
 
     @Override
     public int getItemCount() {
 
-        return count;
+        return mDataList.size();
     }
 
     @Override
@@ -63,6 +63,10 @@ public class SimpleNumberAdapter extends RecyclerView.Adapter<SimpleNumberAdapte
 
         public void setNum(int i) {
             textView.setText(i + "");
+        }
+
+        public void setString(String s) {
+            textView.setText(getAdapterPosition() + ":" + s);
         }
     }
 }

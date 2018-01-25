@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.example.app.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author rainfool
  * @date 2018/1/16
@@ -19,7 +22,10 @@ public class ReverseRecyclerActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     Button mButton1, mButton2;
-    private SimpleNumberAdapter mAdapter;
+    private SimpleStringAdapter mAdapter;
+    private List<String> mDataList;
+
+    private List<String> mTempList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,18 +47,30 @@ public class ReverseRecyclerActivity extends AppCompatActivity {
         });
         mRecyclerView = findViewById(R.id.rv_reverse);
         LinearLayoutManager layout = new LinearLayoutManager(this);
-        layout.setStackFromEnd(true);
+        layout.setReverseLayout(true);
         mRecyclerView.setLayoutManager(layout);
-        mAdapter = new SimpleNumberAdapter(200);
+        mDataList = new ArrayList<>();
+        mDataList.add("first ");
+        mAdapter = new SimpleStringAdapter(mDataList);
         mRecyclerView.setAdapter(mAdapter);
+        initTempList();
+    }
+
+    private void initTempList() {
+        mTempList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            mTempList.add("第" + i);
+        }
     }
 
     private void onAction1Click() {
-        mRecyclerView.scrollToPosition(0);
+        mDataList.addAll(0, mTempList);
+        mAdapter.notifyItemRangeInserted(0, mTempList.size());
+//        mAdapter.notifyDataSetChanged();
     }
 
     private void onAction2Click() {
-        mRecyclerView.scrollToPosition(mAdapter.getItemCount());
+        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
 
     }
 }
