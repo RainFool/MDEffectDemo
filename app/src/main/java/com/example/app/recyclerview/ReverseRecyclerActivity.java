@@ -26,6 +26,7 @@ public class ReverseRecyclerActivity extends AppCompatActivity {
     private List<String> mDataList;
 
     private List<String> mTempList;
+    private LinearLayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,9 +47,8 @@ public class ReverseRecyclerActivity extends AppCompatActivity {
             }
         });
         mRecyclerView = findViewById(R.id.rv_reverse);
-        LinearLayoutManager layout = new LinearLayoutManager(this);
-        layout.setReverseLayout(true);
-        mRecyclerView.setLayoutManager(layout);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mDataList = new ArrayList<>();
         mDataList.add("first ");
         mAdapter = new SimpleStringAdapter(mDataList);
@@ -64,13 +64,14 @@ public class ReverseRecyclerActivity extends AppCompatActivity {
     }
 
     private void onAction1Click() {
-        mDataList.addAll(0, mTempList);
-        mAdapter.notifyItemRangeInserted(0, mTempList.size());
-//        mAdapter.notifyDataSetChanged();
+        mDataList.addAll(1, mTempList);
+//        mAdapter.notifyItemRangeInserted(1, mTempList.size());
+        mAdapter.notifyDataSetChanged();
+        mLayoutManager.scrollToPositionWithOffset(mTempList.size() - 1, 0);
     }
 
     private void onAction2Click() {
-        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-
+//        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+        mLayoutManager.scrollToPositionWithOffset(mTempList.size() - 1, 0);
     }
 }

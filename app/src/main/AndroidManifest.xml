@@ -16,23 +16,23 @@
         <activity android:name=".spannable.SpnnableTestActivity" />
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorLayoutActivity" />
-        <activity android:name=".popup.PopupTestActivity">
+        <activity android:name=".popup.PopupTestActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerViewDemoActivity"></activity>
+        <activity android:name=".recyclerview.ReverseRecyclerActivity">
 
         </activity>
-        <activity android:name=".recyclerview.RecyclerViewDemoActivity">
-        </activity>
-        <activity android:name=".recyclerview.ReverseRecyclerActivity">
+        <activity
+            android:name=".softinput.SoftInputTestActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
+            android:name=".chat.ChatDemoActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".softinput.SoftInputTestActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-
         </activity>
     </application>
 
