@@ -8,4 +8,10 @@
         <item name="android:colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="PopTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
 </resources>

@@ -58,3 +58,6 @@ freeline.py
 freeline/
 freeline_project_description.json
 libs/
+
+# Mac
+.DS_Store

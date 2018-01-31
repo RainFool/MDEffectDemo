@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.example.app.popup.PopupTestActivity">
 
     <TextView
         android:id="@+id/anchor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="anchor"
-        android:layout_margin="100px"
-        android:background="@android:color/holo_red_light"/>
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="100px"
+        android:background="@android:color/holo_red_light"
+        android:textSize="11sp"
+        android:text="11sp啊啊啊啊啊" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/anchor"
+        android:layout_below="@id/anchor"
+        android:textSize="12sp"
+        android:background="@android:color/holo_red_light"
+        android:text="12sp啊啊啊啊啊" />
+
+
+</RelativeLayout>
