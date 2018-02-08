@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,15 +35,15 @@ public class StatusBarUtil {
 
                 SystemBarTintManager tintManager = new SystemBarTintManager(activity);
                 ActionBar actionBar = activity.getActionBar();
-                if (actionBar == null) {
-                    ViewGroup contentLayout = (ViewGroup) parentLayout.getChildAt(0);
-                    if (null != contentLayout) {
-                        contentLayout.setFitsSystemWindows(true);
-                    }
-                } else {
+//                if (actionBar == null) {
+//                    ViewGroup contentLayout = (ViewGroup) parentLayout.getChildAt(0);
+//                    if (null != contentLayout) {
+//                        contentLayout.setFitsSystemWindows(true);
+//                    }
+//                } else {
                     parentLayout.setFitsSystemWindows(false);
                     parentLayout.setPadding(0, DensityUtil.dip2px(activity, 42) + tintManager.getConfig().getStatusBarHeight(), tintManager.getConfig().getPixelInsetRight(), tintManager.getConfig().getPixelInsetBottom());
-                }
+//                }
                 parentLayout.setClipToPadding(true);
             }
 
@@ -108,13 +109,13 @@ public class StatusBarUtil {
             if (MIUISetStatusBarLightMode(activity.getWindow(), dark)) {
                 result = 1;
             }
-//            else if (FlymeSetStatusBarLightMode(activity.getWindow(), dark)) {
-//                result = 2;
-//            }
-            /*else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            else if (FlymeSetStatusBarLightMode(activity.getWindow(), dark)) {
+                result = 2;
+            }
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
                 result = 3;
-            }*/
+            }
         }
         return result;
     }

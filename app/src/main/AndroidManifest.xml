@@ -12,12 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".immersion.ImmersionActivity" >
+        <activity
+            android:name=".immersion.ImmersionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".spannable.SpnnableTestActivity" />
         <activity android:name=".notifycation.NotificationTestActivity" />
@@ -32,7 +36,9 @@
         <activity
             android:name=".softinput.SoftInputTestActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
         <activity
             android:name=".chat.ChatDemoActivity"
             android:windowSoftInputMode="adjustResize">

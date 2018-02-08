@@ -2,8 +2,10 @@ package com.example.app.softinput;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -21,6 +23,9 @@ public class SoftInputTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soft_input_test);
+        FrameLayout contentView = findViewById(android.R.id.content);
+        contentView.setFitsSystemWindows(true);
+        contentView.setClipToPadding(true);
         listView = findViewById(R.id.lv_content);
         editText = findViewById(R.id.et_input);
 
