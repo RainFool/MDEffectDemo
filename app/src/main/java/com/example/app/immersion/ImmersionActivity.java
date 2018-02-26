@@ -1,9 +1,12 @@
 package com.example.app.immersion;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
@@ -31,16 +34,30 @@ public class ImmersionActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setImmersion();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immersion);
 
         mBtnTransparent = (Button) findViewById(R.id.btn_transparent);
         mBtnWhite = (Button) findViewById(R.id.btn_white);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            updateStatusBarColorForM(false);
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
         }
-        StatusBarUtil.setImmersionMode(this,false);
+    }
+
+    private void setImmersion() {
+        (new Handler(Looper.getMainLooper())).post(new Runnable() {
+            @Override
+            public void run() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    updateStatusBarColorForM(false);
+                }
+                StatusBarUtil.setImmersionMode(ImmersionActivity.this, false);
+            }
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

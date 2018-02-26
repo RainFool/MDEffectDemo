@@ -29,33 +29,34 @@ public class StatusBarUtil {
 
     public static void setImmersionMode(Activity activity, boolean darkTheme) {
         int result = StatusBarUtil.StatusBarLightMode(activity, true);
-        if (result == 1 || result == 2) {
-            ViewGroup parentLayout = (ViewGroup) activity.findViewById(android.R.id.content);
-            if (null != parentLayout) {
-
-                SystemBarTintManager tintManager = new SystemBarTintManager(activity);
-                ActionBar actionBar = activity.getActionBar();
-//                if (actionBar == null) {
+//        if (result == 1 || result == 2) {
+//            ViewGroup parentLayout = (ViewGroup) activity.findViewById(android.R.id.content);
+//            if (null != parentLayout) {
+//
+//                SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+//                ActionBar actionBar = activity.getActionBar();
+////                if (actionBar == null) {
 //                    ViewGroup contentLayout = (ViewGroup) parentLayout.getChildAt(0);
 //                    if (null != contentLayout) {
 //                        contentLayout.setFitsSystemWindows(true);
 //                    }
-//                } else {
-                    parentLayout.setFitsSystemWindows(false);
-                    parentLayout.setPadding(0, DensityUtil.dip2px(activity, 42) + tintManager.getConfig().getStatusBarHeight(), tintManager.getConfig().getPixelInsetRight(), tintManager.getConfig().getPixelInsetBottom());
-//                }
-                parentLayout.setClipToPadding(true);
-            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                SystemBarTintManager tintManager = null;
-                setTranslucentStatus(activity, true);
-                tintManager = new SystemBarTintManager(activity);
-                tintManager.setStatusBarTintEnabled(true);
-                tintManager.setStatusBarTintResource(darkTheme ? android.R.color.black : android.R.color.white);
-                StatusBarLightMode(activity, !darkTheme); // 黑色主题，字体用白色
-            }
-        }
+////                } else {
+////                    parentLayout.setFitsSystemWindows(false);
+////                    parentLayout.setPadding(0, DensityUtil.dip2px(activity, 42) + tintManager.getConfig().getStatusBarHeight(), tintManager.getConfig().getPixelInsetRight(), tintManager.getConfig().getPixelInsetBottom());
+////                }
+//                parentLayout.setClipToPadding(true);
+//            }
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                SystemBarTintManager tintManager = null;
+//                //这句代码会显示出让rootview显示出padding，坑！！！
+////                setTranslucentStatus(activity, true);
+//                tintManager = new SystemBarTintManager(activity);
+//                tintManager.setStatusBarTintEnabled(true);
+//                tintManager.setStatusBarTintResource(darkTheme ? android.R.color.black : android.R.color.white);
+//                StatusBarLightMode(activity, !darkTheme); // 黑色主题，字体用白色
+//            }
+//        }
     }
 
     public static void revertImmersionModeNone(Activity activity) {
