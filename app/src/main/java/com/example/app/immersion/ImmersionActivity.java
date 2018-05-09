@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,18 +36,16 @@ public class ImmersionActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setImmersion();
+//        setImmersion();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_immersion);
+//        setContentView(R.layout.activity_immersion);
 
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide);
+        getWindow().setEnterTransition(transition);
         mBtnTransparent = (Button) findViewById(R.id.btn_transparent);
         mBtnWhite = (Button) findViewById(R.id.btn_white);
-
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
     }
+
 
     private void setImmersion() {
         (new Handler(Looper.getMainLooper())).post(new Runnable() {
