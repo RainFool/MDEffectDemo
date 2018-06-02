@@ -3,48 +3,49 @@
     package="com.example.app">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".immersion.ImmersionActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".spannable.SpnnableTestActivity" />
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorLayoutActivity" />
         <activity
             android:name=".popup.PopupTestActivity"
-            android:theme="@style/PopTheme"></activity>
+            android:theme="@style/PopTheme" />
         <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
             android:name=".softinput.SoftInputTestActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".chat.ChatDemoActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
         <activity
             android:name=".immersion.FullScreenActivity"
-            android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen">
+            android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen"></activity>
+        <activity android:name=".push.OpenPermisionSettingActivity"></activity>
+        <activity android:name=".imagelibrary.FrescoTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        </activity>
-        <activity android:name=".push.OpenPermisionSettingActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

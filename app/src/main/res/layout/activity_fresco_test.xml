@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.imagelibrary.FrescoTestActivity">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_fresco_a"
+        android:layout_width="400dp"
+        android:layout_height="200dp" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_fresco_b"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/sdv_fresco_a" />
+
+    <Button
+        android:id="@+id/btn_fresco_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="刷新" />
+
+</RelativeLayout>
