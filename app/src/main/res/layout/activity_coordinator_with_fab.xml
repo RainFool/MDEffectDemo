@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     tools:context="com.example.app.coordinator.CoordinatorWithFabActivity">
+
+    <LinearLayout
+        android:id="@+id/anchor_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="onFabClick" />
+        android:layout_margin="8dp"
+        android:onClick="onFabClick"
+        app:layout_anchor="@id/anchor_view"
+        app:layout_anchorGravity="center_horizontal|bottom" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
