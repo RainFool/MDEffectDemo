@@ -38,10 +38,8 @@
             android:name=".immersion.FullScreenActivity"
             android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen" />
         <activity android:name=".push.OpenPermisionSettingActivity" />
-        <activity android:name=".imagelibrary.FrescoTestActivity"></activity>
-        <activity android:name=".viewpager.ViewPagerEffectActivity">
-
-        </activity>
+        <activity android:name=".imagelibrary.FrescoTestActivity" />
+        <activity android:name=".viewpager.ViewPagerEffectActivity"></activity>
         <activity android:name=".coordinator.CoordinatorDispatchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".coordinator.CoordinatorAppbarActivity"></activity>
     </application>
 
 </manifest>

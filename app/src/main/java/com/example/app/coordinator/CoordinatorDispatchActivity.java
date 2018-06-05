@@ -38,6 +38,7 @@ public class CoordinatorDispatchActivity extends AppCompatActivity {
 
         static {
             DISPATCHING_ACTIVITIES_MAP.put(CoordinatorWithFabActivity.class, CoordinatorWithFabActivity.class.getSimpleName());
+            DISPATCHING_ACTIVITIES_MAP.put(CoordinatorAppbarActivity.class, CoordinatorAppbarActivity.class.getSimpleName());
         }
 
         private List<String> mDescriptionList = new ArrayList<>(DISPATCHING_ACTIVITIES_MAP.values());
