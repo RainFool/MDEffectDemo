@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/fl_fm_pwd_close"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="right">
+
+        <ImageView
+            android:layout_width="@dimen/dp18"
+            android:layout_height="@dimen/dp18"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp20">
+
+
+        <TextView
+            android:id="@+id/tv_fm_pwd_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="title"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/fbv_fm_pwd_content"
+            android:layout_width="@dimen/dp160"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_fm_pwd_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp40"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            android:digits="1234567890"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="@dimen/dp30" />
+
+        <TextView
+            android:id="@+id/tv_fm_pwd_start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fbv_fm_pwd_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp20"
+            android:paddingBottom="@dimen/dp8"
+            android:paddingLeft="@dimen/dp34"
+            android:paddingRight="@dimen/dp34"
+            android:paddingTop="@dimen/dp8"
+            android:background="@color/colorAccent"
+            android:text="开始聊天"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

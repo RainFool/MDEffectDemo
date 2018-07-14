@@ -18,4 +18,63 @@
     <style name="Theme.Holo.Light.Kiwi.NoActionBar.FullScreen" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <item name="android:windowFullscreen">true</item>
     </style>
+
+
+    <style name="Widget.EditText.Kiwi" parent="android:Widget.EditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+
+    <style name="Widget.EditText.Kiwi.Numbers" parent="Widget.EditText.Kiwi">
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:selectAllOnFocus">false</item>
+        <item name="android:digits">1234567890</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.Light.NoActionbar.Kiwi" parent="Theme.AppCompat">
+        <!-- Window attributes -->
+        <item name="android:windowSoftInputMode">adjustNothing|stateAlwaysHidden</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Widget styles -->
+        <item name="android:editTextStyle">@style/Widget.EditText.Kiwi</item>
+
+        <!-- Text selection handle attributes -->
+
+        <!-- Action Bar -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!--<item name="android:homeAsUpIndicator">@drawable/x_back_icon_black_selector</item>-->
+        <!-- Text styles -->
+        <item name="android:textSize">16sp</item>
+        <!-- <item name="android:textColor">@android:color/black</item>-->
+
+        <!-- Dialog attributes -->
+        <item name="android:dialogTheme">@style/Theme.Dialog.Kiwi</item>
+
+        <!-- dropdown listview (search)-->
+    </style>
+
+    <style name="Theme.Dialog.Kiwi" parent="android:Theme.Dialog">
+
+        <!-- Window attributes -->
+        <item name="android:windowSoftInputMode">adjustNothing|stateAlwaysHidden</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+
+        <!-- Widget styles -->
+
+        <!-- Text styles -->
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ff333333</item>
+    </style>
 </resources>
