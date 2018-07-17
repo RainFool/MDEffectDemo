@@ -40,22 +40,24 @@
         <activity android:name=".push.OpenPermisionSettingActivity" />
         <activity android:name=".imagelibrary.FrescoTestActivity" />
         <activity android:name=".viewpager.ViewPagerEffectActivity" />
-        <activity android:name=".coordinator.CoordinatorDispatchActivity"></activity>
+        <activity android:name=".coordinator.CoordinatorDispatchActivity" />
         <activity android:name=".coordinator.CoordinatorAppbarActivity" />
-        <activity android:name=".password.PasswordActivity">
-
-        </activity>
+        <activity android:name=".password.PasswordActivity"></activity>
         <activity
             android:name=".dialogfragment.DialogFragmentTestActivity"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionbar.Kiwi">
+
+        </activity>
+        <activity android:name=".toast.ToastDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
