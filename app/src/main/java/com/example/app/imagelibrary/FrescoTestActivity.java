@@ -1,30 +1,45 @@
 package com.example.app.imagelibrary;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.example.app.R;
-import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.io.File;
 
 public class FrescoTestActivity extends AppCompatActivity {
 
     private static final String URL_FLUSH = "http://screenshot.msstatic.com/yysnapshot/a7f85c8994af983226611a1c41bba484a3211994";
     private static final String URL_A = "http://v-huya-img.huya.com/1814/28261075/4-460x268.jpg";
 
-    SimpleDraweeView mImageA, mImageB;
+
     Button mBtnRefresh;
+
+    FrameLayout mContainer;
+    private KiwiWebpView<File> kiwiWebpView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fresco_test);
+        mContainer = findViewById(R.id.container);
 
-        mImageA = findViewById(R.id.sdv_fresco_a);
-        mImageB = findViewById(R.id.sdv_fresco_b);
         mBtnRefresh = findViewById(R.id.btn_fresco_refresh);
+        kiwiWebpView = new KiwiWebpView<File>(this) {
+            @Override
+            protected String getFilePath(File item) {
+                return item.getAbsolutePath();
+            }
+        };
+        kiwiWebpView.setMaxLoopTimes(1);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        mContainer.addView(kiwiWebpView, params);
 
         mBtnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,11 +49,14 @@ public class FrescoTestActivity extends AppCompatActivity {
         });
     }
 
-    private void onRefreshClicked(View v) {
-        Uri uriA = Uri.parse(URL_A);
-        Uri uriB = Uri.parse(URL_FLUSH);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        kiwiWebpView.notifyVisibleToUser();
+    }
 
-        mImageA.setImageURI(uriA);
-        mImageB.setImageURI(uriB);
+    private void onRefreshClicked(View v) {
+        File file = new File(Environment.getExternalStorageDirectory(), "/Pictures/test.webp");
+        kiwiWebpView.start(file);
     }
 }

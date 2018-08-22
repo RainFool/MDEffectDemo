@@ -32,8 +32,7 @@ public class BindProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        System.out.println("-------------------rainfool,process");
-//        mMessager.printMessage(Diagnostic.Kind.NOTE,"-------------------rainfool,process");
+
         return true;
     }
 
