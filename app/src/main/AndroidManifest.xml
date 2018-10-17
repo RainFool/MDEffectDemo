@@ -65,7 +65,14 @@
             android:name=".immersion.ImmersionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".spannable.SpnnableTestActivity" />
+        <activity android:name=".spannable.SpnnableTestActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorWithFabActivity" />
         <activity
@@ -89,11 +96,6 @@
         <activity android:name=".viewpager.ViewPagerEffectActivity" />
         <activity android:name=".coordinator.CoordinatorDispatchActivity" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".coordinator.CoordinatorAppbarActivity" />
         <activity android:name=".password.PasswordActivity" />

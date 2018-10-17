@@ -9,12 +9,25 @@
         android:id="@+id/btn_spannable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="spannable"/>
+        android:text="spannable" />
 
     <EditText
         android:id="@+id/et_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:hint="请输入"/>
+        android:hint="请输入" />
+
+    <TextView
+        android:id="@+id/tv_spannable_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:lineSpacingExtra="@dimen/dp16"
+        android:paddingBottom="@dimen/dp1"
+        android:paddingTop="@dimen/dp1"
+        android:textSize="13sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/color_aaaaaa"
+        android:text="Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0."/>
 </RelativeLayout>
