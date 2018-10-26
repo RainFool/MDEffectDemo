@@ -65,13 +65,19 @@
             android:name=".immersion.ImmersionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".spannable.SpnnableTestActivity"></activity>
+        <activity android:name=".spannable.SpnnableTestActivity" />
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorWithFabActivity" />
         <activity
             android:name=".popup.PopupTestActivity"
             android:theme="@style/PopTheme" />
-        <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
+        <activity android:name=".recyclerview.RecyclerViewDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
             android:name=".softinput.SoftInputTestActivity"
@@ -106,14 +112,10 @@
             android:theme="@style/AdSplash"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity android:name=".avtivitystack.StackBActivity" />
-        <activity android:name=".avtivitystack.StackTestActivity">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".avtivitystack.StackTestActivity" />
+        <activity android:name=".inflater.LayoutInflaterActivity"></activity>
+        <activity android:name=".recyclerview.CommonRecyclerPoolActivity"
+            android:label="common pool"></activity>
     </application>
 
 </manifest>

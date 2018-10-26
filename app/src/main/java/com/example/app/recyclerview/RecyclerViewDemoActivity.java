@@ -1,7 +1,8 @@
 package com.example.app.recyclerview;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,13 +12,20 @@ import android.view.ViewGroup;
 
 import com.example.app.R;
 
+import java.util.Random;
+
+import hugo.weaving.DebugLog;
+
+/**
+ * @author rainfool
+ */
 public class RecyclerViewDemoActivity extends AppCompatActivity {
 
     private static final String TAG = "RecyclerViewDemo";
 
     RecyclerView mContainerRv;
 
-    RecyclerView.RecycledViewPool mRecycledViewPool;
+    RecyclerView.RecycledViewPool mRecycledViewPool = CustomRecyclerViewPool.INSTANCE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +34,22 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         mContainerRv = findViewById(R.id.rv_container);
         mContainerRv.setLayoutManager(new LinearLayoutManager(this));
         mContainerRv.setAdapter(new ContainerAdapter());
-        mRecycledViewPool = new RecyclerView.RecycledViewPool();
         mContainerRv.setRecycledViewPool(mRecycledViewPool);
 
+        findViewById(R.id.btn_skip_common_pool).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecyclerViewDemoActivity.this, CommonRecyclerPoolActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class ContainerAdapter extends RecyclerView.Adapter<ContainerViewHolder> {
 
 
         @Override
+        @DebugLog
         public ContainerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             Log.d(TAG, "onCreateViewHolder: main");
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -43,11 +58,11 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         }
 
         @Override
+        @DebugLog
         public void onBindViewHolder(ContainerViewHolder holder, int position) {
             Log.d(TAG, "onBindViewHolder: main" + position);
-            SimpleNumberAdapter adapter = new SimpleNumberAdapter(5);
+            SimpleNumberAdapter adapter = new SimpleNumberAdapter(position,5);
             holder.mainItemRecyclerView.setAdapter(adapter);
-
         }
 
         @Override
@@ -64,7 +79,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
             super(itemView);
             mainItemRecyclerView = itemView.findViewById(R.id.rv_item_main);
             LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
-            layoutManager.setReverseLayout(true);
+            layoutManager.setOrientation(RecyclerView.HORIZONTAL);
             mainItemRecyclerView.setLayoutManager(layoutManager);
             mainItemRecyclerView.setRecycledViewPool(mRecycledViewPool);
         }
