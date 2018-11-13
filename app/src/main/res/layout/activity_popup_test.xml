@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.app.popup.PopupTestActivity">
+    tools:context="com.rainfool.md.popup.PopupTestActivity">
 
     <TextView
         android:id="@+id/anchor"

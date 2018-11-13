@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.push.OpenPermisionSettingActivity">
+    tools:context="com.rainfool.md.push.OpenPermisionSettingActivity">
 
     <Button
         android:id="@+id/btn_xiaomi"
