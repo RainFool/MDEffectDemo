@@ -72,11 +72,7 @@
             android:name=".popup.PopupTestActivity"
             android:theme="@style/PopTheme" />
         <activity android:name=".recyclerview.RecyclerViewDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
@@ -116,6 +112,13 @@
         <activity android:name=".inflater.LayoutInflaterActivity"></activity>
         <activity android:name=".recyclerview.CommonRecyclerPoolActivity"
             android:label="common pool"></activity>
+        <activity android:name=".service.StartServiceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
