@@ -71,12 +71,12 @@ class StatusProgressView @JvmOverloads constructor(
     }
 
     fun setCurrentStep(step: Int) {
-        Log.d(TAG, "setCurrentStep ,step:$step")
         mCurStep = when {
-            step < 0 -> 0
+            step < 0 -> -1
             step > mNodesCount -> mNodesCount
             else -> step
         }
+        Log.d(TAG, "setCurrentStep ,step:$mCurStep")
         invalidate()
     }
 
@@ -117,6 +117,8 @@ class StatusProgressView @JvmOverloads constructor(
         Log.d(TAG, "drawLines")
         val currentNode = if (mCurStep >= mNodesCount) {
             mNodeList.last()
+        } else if (mCurStep < 0) {
+            mNodeList.first()
         } else {
             mNodeList[mCurStep]
         }
