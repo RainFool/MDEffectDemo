@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rainfool.md.customview.StatusProgressActivity">
+
+    <com.rainfool.md.customview.StatusProgressView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp120"
+        android:background="@android:color/white"
+        app:nodeRadius="@dimen/dp16"
+        app:progressingDrawable="@drawable/accompany_layer_status_node_processing"
+        app:reachedDrawable="@drawable/accompany_layer_status_node_reached"
+        app:reachedLineColor="#ffa200"
+        app:unReachedDrawable="@drawable/accompany_layer_status_node_unreached"
+        app:unreachedLineColor="#e8e8e8"
+        app:nodesNum="3"/>
+
+</LinearLayout>
