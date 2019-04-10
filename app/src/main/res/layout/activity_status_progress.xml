@@ -10,12 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp120"
         android:background="@android:color/white"
-        app:nodeRadius="@dimen/dp16"
+        app:lineHeight="@dimen/dp1"
+        app:nodeRadius="@dimen/dp8"
+        app:nodesNum="3"
         app:progressingDrawable="@drawable/accompany_layer_status_node_processing"
         app:reachedDrawable="@drawable/accompany_layer_status_node_reached"
         app:reachedLineColor="#ffa200"
         app:unReachedDrawable="@drawable/accompany_layer_status_node_unreached"
-        app:unreachedLineColor="#e8e8e8"
-        app:nodesNum="3"/>
+        app:unreachedLineColor="#e8e8e8" />
 
 </LinearLayout>

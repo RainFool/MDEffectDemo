@@ -100,22 +100,23 @@ class StatusProgressView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         Log.d(TAG, "onDraw")
-        drawProgress(canvas)
+        drawLines(canvas)
         drawNodes(canvas)
 
     }
 
-    private fun drawProgress(canvas: Canvas) {
-        Log.d(TAG, "drawProgress")
+    private fun drawLines(canvas: Canvas) {
+        Log.d(TAG, "drawLines")
         val paint = Paint()
+        paint.isAntiAlias = true
         val fNodeRadius = mNodeRadius.toFloat()
         val fHeight = mHeight.toFloat()
         val fLineHeight = mLineHeight.toFloat()
         val currentNode = mNodeList[mCurNodesNum]
         paint.color = mReachedLineColor
-        paint.strokeWidth = fNodeRadius / 2
+        paint.strokeWidth = fLineHeight
 
-        val lineStartY = fHeight / 2 - mLineHeight / 2
+        val lineStartY = fHeight / 2 - fLineHeight / 2F
         val lineStopY = lineStartY + fLineHeight
         val reachedLineStartX = paddingLeft + fNodeRadius
         val reachedLineStopX = paddingLeft + currentNode.point.x + fNodeRadius
@@ -123,7 +124,7 @@ class StatusProgressView @JvmOverloads constructor(
 
         canvas.drawLine(reachedLineStartX, lineStartY, reachedLineStopX, lineStopY, paint)
         paint.color = mUnreachedLineColor
-        canvas.drawLine(reachedLineStopX, lineStartY, unreachedLineStopY, lineStartY, paint)
+        canvas.drawLine(reachedLineStopX, lineStartY, unreachedLineStopY, lineStopY, paint)
     }
 
     private fun drawNodes(canvas: Canvas) {
