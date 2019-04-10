@@ -4,21 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.rainfool.md.customview.StatusProgressActivity">
 
     <com.rainfool.md.customview.StatusProgressView
+        android:id="@+id/mStatusProgressView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp120"
-        android:padding="@dimen/dp20"
         android:background="@android:color/white"
+        android:paddingLeft="@dimen/dp20"
+        app:isDebugMode="true"
         app:lineHeight="@dimen/dp1"
         app:nodeRadius="@dimen/dp8"
-        app:nodesNum="3"
+        app:nodesNum="4"
         app:progressingDrawable="@drawable/accompany_layer_status_node_processing"
         app:reachedDrawable="@drawable/accompany_layer_status_node_reached"
         app:reachedLineColor="#ffa200"
         app:unReachedDrawable="@drawable/accompany_layer_status_node_unreached"
-        app:unreachedLineColor="#e8e8e8"
-        app:isDebugMode="true"/>
+        app:unreachedLineColor="#e8e8e8" />
+
+    <Button
+        android:id="@+id/mBtnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plus 1" />
+
+    <Button
+        android:id="@+id/mBtnMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minus 1" />
+
+    <Button
+        android:id="@+id/mBtnZero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RTZ" />
 
 </LinearLayout>

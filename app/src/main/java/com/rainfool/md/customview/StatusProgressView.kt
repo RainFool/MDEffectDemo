@@ -29,7 +29,7 @@ class StatusProgressView @JvmOverloads constructor(
     // 节点总数目
     private var mNodesCount = 0
     // 当前节点序号
-    private var mCurNodesNum = 0
+    private var mCurStep = 0
 
     private var mDrawableProcessing: Drawable?
     private var mDrawableUnreached: Drawable?
@@ -54,7 +54,7 @@ class StatusProgressView @JvmOverloads constructor(
         mDrawableReached = mTypedArray.getDrawable(R.styleable.StatusProgressView_reachedDrawable)
         mDrawableProcessing = mTypedArray.getDrawable(R.styleable.StatusProgressView_progressingDrawable)
         mDrawableUnreached = mTypedArray.getDrawable(R.styleable.StatusProgressView_unReachedDrawable)
-        mCurNodesNum = mTypedArray.getInt(R.styleable.StatusProgressView_currNodeNO, 1)
+        mCurStep = mTypedArray.getInt(R.styleable.StatusProgressView_curStep, 0)
         mReachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_reachedLineColor, DEFAULT_LINE_COLOR)
         mUnreachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_unreachedLineColor, DEFAULT_LINE_COLOR)
         mLineHeight = mTypedArray.getDimensionPixelOffset(R.styleable.StatusProgressView_lineHeight, DEFAULT_LINE_WIDTH)
@@ -68,6 +68,16 @@ class StatusProgressView @JvmOverloads constructor(
         mNodeList = (0 until mNodesCount).map {
             Node()
         }
+    }
+
+    fun setCurrentStep(step: Int) {
+        Log.d(TAG, "setCurrentStep ,step:$step")
+        mCurStep = when {
+            step < 0 -> 0
+            step > mNodesCount -> mNodesCount
+            else -> step
+        }
+        invalidate()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -84,9 +94,9 @@ class StatusProgressView @JvmOverloads constructor(
                 }
                 y = mHeight / 2 - mNodeRadius
             }
-            if (index < mCurNodesNum) {
+            if (index < mCurStep) {
                 node.type = 0
-            } else if (index > mCurNodesNum) {
+            } else if (index > mCurStep) {
                 node.type = 2
             } else {
                 node.type = 1
@@ -105,12 +115,16 @@ class StatusProgressView @JvmOverloads constructor(
 
     private fun drawLines(canvas: Canvas) {
         Log.d(TAG, "drawLines")
+        val currentNode = if (mCurStep >= mNodesCount) {
+            mNodeList.last()
+        } else {
+            mNodeList[mCurStep]
+        }
         val paint = Paint()
         paint.isAntiAlias = true
         val fNodeRadius = mNodeRadius.toFloat()
         val fHeight = mHeight.toFloat()
         val fLineHeight = mLineHeight.toFloat()
-        val currentNode = mNodeList[mCurNodesNum]
         paint.color = mReachedLineColor
         paint.strokeWidth = fLineHeight
 
@@ -130,8 +144,8 @@ class StatusProgressView @JvmOverloads constructor(
             node.run {
                 val pendingDrawable: Drawable? =
                         when {
-                            index < mCurNodesNum -> mDrawableReached
-                            index == mCurNodesNum -> mDrawableProcessing
+                            index < mCurStep -> mDrawableReached
+                            index == mCurStep -> mDrawableProcessing
                             else -> mDrawableUnreached
                         }
                 pendingDrawable?.setBounds(point.x, point.y, point.x + mNodeRadius * 2, point.y + mNodeRadius * 2)

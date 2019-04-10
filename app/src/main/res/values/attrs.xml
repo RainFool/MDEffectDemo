@@ -10,7 +10,7 @@
         <attr name="reachedLineColor" format="color" />
         <attr name="unreachedLineColor" format="color" />
         <attr name="lineHeight" format="dimension" />
-        <attr name="currNodeNO" format="integer" />  <!-- 当前所到达的节点编号  0开始计算-->
+        <attr name="curStep" format="integer" />  <!-- 当前所到达的节点编号  0开始计算-->
         <attr name="isDebugMode" format="boolean" />
     </declare-styleable>
 </resources>
