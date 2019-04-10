@@ -26,14 +26,10 @@ class StatusProgressView @JvmOverloads constructor(
         private const val DEFAULT_LINE_WIDTH = 4
     }
 
-    private val mContext = context
-
     // 节点总数目
     private var mNodesCount = 0
     // 当前节点序号
     private var mCurNodesNum = 0
-    // 当前节点状态 0：失败 1：成功
-    private var mCurNodeState = 0
 
     private var mDrawableProcessing: Drawable?
     private var mDrawableUnreached: Drawable?
@@ -47,6 +43,8 @@ class StatusProgressView @JvmOverloads constructor(
     private var mWidth = 0
     private var mHeight = 0
 
+    private var mIsDebugMode = false
+
     private var mNodeList = listOf<Node>()
 
     init {
@@ -56,11 +54,11 @@ class StatusProgressView @JvmOverloads constructor(
         mDrawableReached = mTypedArray.getDrawable(R.styleable.StatusProgressView_reachedDrawable)
         mDrawableProcessing = mTypedArray.getDrawable(R.styleable.StatusProgressView_progressingDrawable)
         mDrawableUnreached = mTypedArray.getDrawable(R.styleable.StatusProgressView_unReachedDrawable)
-        mCurNodeState = mTypedArray.getInt(R.styleable.StatusProgressView_currNodeState, 1)
         mCurNodesNum = mTypedArray.getInt(R.styleable.StatusProgressView_currNodeNO, 1)
         mReachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_reachedLineColor, DEFAULT_LINE_COLOR)
         mUnreachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_unreachedLineColor, DEFAULT_LINE_COLOR)
         mLineHeight = mTypedArray.getDimensionPixelOffset(R.styleable.StatusProgressView_lineHeight, DEFAULT_LINE_WIDTH)
+        mIsDebugMode = mTypedArray.getBoolean(R.styleable.StatusProgressView_isDebugMode, false)
 
         if (mNodesCount <= 1) {
             mNodesCount = 2
@@ -74,15 +72,15 @@ class StatusProgressView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        mWidth = measuredWidth - paddingLeft - paddingRight
-        mHeight = measuredHeight - paddingTop - paddingBottom
-        val nodeWidth = mWidth / (mNodesCount - 1)
+        mWidth = measuredWidth
+        mHeight = measuredHeight
+        val nodeWidth = (mWidth - paddingLeft - paddingRight) / (mNodesCount - 1)
         mNodeList.forEachIndexed { index, node ->
             with(node.point) {
                 x = when (index) {
-                    0 -> 0
-                    mNodeList.size - 1 -> nodeWidth * index - mNodeRadius * 2
-                    else -> nodeWidth * index - mNodeRadius
+                    0 -> paddingLeft
+                    mNodeList.size - 1 -> mWidth - paddingRight - mNodeRadius * 2
+                    else -> paddingLeft + nodeWidth * index - mNodeRadius
                 }
                 y = mHeight / 2 - mNodeRadius
             }
@@ -116,15 +114,14 @@ class StatusProgressView @JvmOverloads constructor(
         paint.color = mReachedLineColor
         paint.strokeWidth = fLineHeight
 
-        val lineStartY = fHeight / 2 - fLineHeight / 2F
-        val lineStopY = lineStartY + fLineHeight
+        val lineY = fHeight / 2 - fLineHeight / 2F
         val reachedLineStartX = paddingLeft + fNodeRadius
-        val reachedLineStopX = paddingLeft + currentNode.point.x + fNodeRadius
-        val unreachedLineStopY = mWidth - paddingRight - fNodeRadius
+        val reachedLineStopX = currentNode.point.x + fNodeRadius
+        val unreachedLineStopX = mWidth - fNodeRadius - paddingRight
 
-        canvas.drawLine(reachedLineStartX, lineStartY, reachedLineStopX, lineStopY, paint)
+        canvas.drawLine(reachedLineStartX, lineY, reachedLineStopX, lineY, paint)
         paint.color = mUnreachedLineColor
-        canvas.drawLine(reachedLineStopX, lineStartY, unreachedLineStopY, lineStopY, paint)
+        canvas.drawLine(reachedLineStopX, lineY, unreachedLineStopX, lineY, paint)
     }
 
     private fun drawNodes(canvas: Canvas) {
@@ -139,9 +136,13 @@ class StatusProgressView @JvmOverloads constructor(
                         }
                 pendingDrawable?.setBounds(point.x, point.y, point.x + mNodeRadius * 2, point.y + mNodeRadius * 2)
                 pendingDrawable?.draw(canvas)
-                val paint = Paint()
-                paint.style = Paint.Style.STROKE
-                canvas.drawRect(point.x.toFloat(), point.y.toFloat(), (point.x + mNodeRadius * 2).toFloat(), (point.y + mNodeRadius * 2).toFloat(), paint)
+                if (mIsDebugMode) {
+                    val paint = Paint()
+                    paint.style = Paint.Style.STROKE
+                    canvas.drawRect(point.x.toFloat(), point.y.toFloat(), (point.x + mNodeRadius * 2).toFloat(), (point.y + mNodeRadius * 2).toFloat(), paint)
+                    canvas.drawLine(point.x.toFloat() + mNodeRadius, 0F, point.x.toFloat() + mNodeRadius, mHeight.toFloat(), paint)
+                    canvas.drawLine(0F, mHeight / 2F, mWidth.toFloat(), mHeight / 2F, paint)
+                }
             }
         }
     }

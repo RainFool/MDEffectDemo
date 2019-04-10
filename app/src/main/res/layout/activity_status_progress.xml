@@ -9,6 +9,7 @@
     <com.rainfool.md.customview.StatusProgressView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp120"
+        android:padding="@dimen/dp20"
         android:background="@android:color/white"
         app:lineHeight="@dimen/dp1"
         app:nodeRadius="@dimen/dp8"
@@ -17,6 +18,7 @@
         app:reachedDrawable="@drawable/accompany_layer_status_node_reached"
         app:reachedLineColor="#ffa200"
         app:unReachedDrawable="@drawable/accompany_layer_status_node_unreached"
-        app:unreachedLineColor="#e8e8e8" />
+        app:unreachedLineColor="#e8e8e8"
+        app:isDebugMode="true"/>
 
 </LinearLayout>
