@@ -1,14 +1,12 @@
 package com.rainfool.md.customview
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Point
+import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import com.rainfool.md.R
 
 /**
@@ -24,6 +22,9 @@ class StatusProgressView @JvmOverloads constructor(
         private const val DEFAULT_LINE_COLOR = Color.BLUE
         private const val DEFAULT_NODE_RADIUS = 16
         private const val DEFAULT_LINE_WIDTH = 4
+        private const val DEFAULT_NODE_NAME_MARGIN_TOP = 12
+        private const val DEFAULT_NODE_NAME_TEXT_SIZE = 12F
+        private const val DEFAULT_NODE_NAME_TEXT_COLOR = Color.BLACK
     }
 
     // 节点总数目
@@ -45,7 +46,17 @@ class StatusProgressView @JvmOverloads constructor(
 
     private var mIsDebugMode = false
 
+    private var mNodeNameList = listOf<String>()
+    private var mNodeNameMarginTop = DEFAULT_NODE_NAME_MARGIN_TOP
+    private var mNodeNameTextSize = DEFAULT_NODE_NAME_TEXT_SIZE
+    private var mReachedNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
+    private var mUnreachedNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
+    private var mProgressingNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
+
     private var mNodeList = listOf<Node>()
+
+    private var mPaint = Paint()
+    private var mTextFontMetircs = Paint.FontMetrics()
 
     init {
         val mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.StatusProgressView)
@@ -57,8 +68,19 @@ class StatusProgressView @JvmOverloads constructor(
         mCurStep = mTypedArray.getInt(R.styleable.StatusProgressView_curStep, 0)
         mReachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_reachedLineColor, DEFAULT_LINE_COLOR)
         mUnreachedLineColor = mTypedArray.getColor(R.styleable.StatusProgressView_unreachedLineColor, DEFAULT_LINE_COLOR)
-        mLineHeight = mTypedArray.getDimensionPixelOffset(R.styleable.StatusProgressView_lineHeight, DEFAULT_LINE_WIDTH)
+        mLineHeight = mTypedArray.getDimensionPixelSize(R.styleable.StatusProgressView_lineHeight, DEFAULT_LINE_WIDTH)
         mIsDebugMode = mTypedArray.getBoolean(R.styleable.StatusProgressView_isDebugMode, false)
+        val nodeNameArray = mTypedArray.getTextArray(R.styleable.StatusProgressView_nodeNameArray)
+        if (nodeNameArray != null) {
+            mNodeNameList = nodeNameArray.map {
+                it.toString()
+            }
+        }
+        mNodeNameMarginTop = mTypedArray.getDimensionPixelOffset(R.styleable.StatusProgressView_nodeNameMarginTop, DEFAULT_NODE_NAME_MARGIN_TOP)
+        mNodeNameTextSize = mTypedArray.getDimension(R.styleable.StatusProgressView_nodeNameTextSize, DEFAULT_NODE_NAME_TEXT_SIZE)
+        mReachedNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_reachedNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
+        mUnreachedNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_unreachedNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
+        mProgressingNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_progressingNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
 
         if (mNodesCount <= 1) {
             mNodesCount = 2
@@ -82,6 +104,17 @@ class StatusProgressView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        if (mNodeNameList.isNotEmpty() && layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
+            val widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
+            val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+            val heightSize = MeasureSpec.getSize(heightMeasureSpec)
+            mPaint.textSize = mNodeNameTextSize
+            mTextFontMetircs = mPaint.fontMetrics
+            val customHeightSize = paddingTop + mNodeRadius * 2 + mNodeNameMarginTop + (mTextFontMetircs.bottom - mTextFontMetircs.top) + paddingBottom
+            setMeasuredDimension(widthSize, customHeightSize.toInt())
+        }
+
         mWidth = measuredWidth
         mHeight = measuredHeight
         val nodeWidth = (mWidth - paddingLeft - paddingRight) / (mNodesCount - 1)
@@ -92,7 +125,7 @@ class StatusProgressView @JvmOverloads constructor(
                     mNodeList.size - 1 -> mWidth - paddingRight - mNodeRadius * 2
                     else -> paddingLeft + nodeWidth * index - mNodeRadius
                 }
-                y = mHeight / 2 - mNodeRadius
+                y = paddingTop
             }
             if (index < mCurStep) {
                 node.type = 0
@@ -110,7 +143,6 @@ class StatusProgressView @JvmOverloads constructor(
         Log.d(TAG, "onDraw")
         drawLines(canvas)
         drawNodes(canvas)
-
     }
 
     private fun drawLines(canvas: Canvas) {
@@ -122,43 +154,79 @@ class StatusProgressView @JvmOverloads constructor(
         } else {
             mNodeList[mCurStep]
         }
-        val paint = Paint()
-        paint.isAntiAlias = true
+        mPaint.reset()
+        mPaint.isAntiAlias = true
         val fNodeRadius = mNodeRadius.toFloat()
         val fHeight = mHeight.toFloat()
         val fLineHeight = mLineHeight.toFloat()
-        paint.color = mReachedLineColor
-        paint.strokeWidth = fLineHeight
+        mPaint.color = mReachedLineColor
+        mPaint.strokeWidth = fLineHeight
 
-        val lineY = fHeight / 2 - fLineHeight / 2F
+        val lineY = paddingTop + mNodeRadius + 0F
         val reachedLineStartX = paddingLeft + fNodeRadius
         val reachedLineStopX = currentNode.point.x + fNodeRadius
         val unreachedLineStopX = mWidth - fNodeRadius - paddingRight
 
-        canvas.drawLine(reachedLineStartX, lineY, reachedLineStopX, lineY, paint)
-        paint.color = mUnreachedLineColor
-        canvas.drawLine(reachedLineStopX, lineY, unreachedLineStopX, lineY, paint)
+        canvas.drawLine(reachedLineStartX, lineY, reachedLineStopX, lineY, mPaint)
+        mPaint.color = mUnreachedLineColor
+        canvas.drawLine(reachedLineStopX, lineY, unreachedLineStopX, lineY, mPaint)
     }
 
     private fun drawNodes(canvas: Canvas) {
         mNodeList.forEachIndexed { index, node ->
             Log.v("drawNodes", "x=${node.point.x},y=${node.point.y}")
-            node.run {
-                val pendingDrawable: Drawable? =
-                        when {
-                            index < mCurStep -> mDrawableReached
-                            index == mCurStep -> mDrawableProcessing
-                            else -> mDrawableUnreached
-                        }
-                pendingDrawable?.setBounds(point.x, point.y, point.x + mNodeRadius * 2, point.y + mNodeRadius * 2)
-                pendingDrawable?.draw(canvas)
-                if (mIsDebugMode) {
-                    val paint = Paint()
-                    paint.style = Paint.Style.STROKE
-                    canvas.drawRect(point.x.toFloat(), point.y.toFloat(), (point.x + mNodeRadius * 2).toFloat(), (point.y + mNodeRadius * 2).toFloat(), paint)
-                    canvas.drawLine(point.x.toFloat() + mNodeRadius, 0F, point.x.toFloat() + mNodeRadius, mHeight.toFloat(), paint)
-                    canvas.drawLine(0F, mHeight / 2F, mWidth.toFloat(), mHeight / 2F, paint)
+            drawNode(canvas, index, node)
+            drawText(canvas, index, node)
+            drawDebugLine(node, canvas)
+        }
+
+    }
+
+    private fun drawNode(canvas: Canvas, index: Int, node: Node) {
+        mPaint.reset()
+        node.run {
+            val pendingDrawable: Drawable? =
+                    when {
+                        index < mCurStep -> mDrawableReached
+                        index == mCurStep -> mDrawableProcessing
+                        else -> mDrawableUnreached
+                    }
+            pendingDrawable?.setBounds(point.x, point.y, point.x + mNodeRadius * 2, point.y + mNodeRadius * 2)
+            pendingDrawable?.draw(canvas)
+        }
+    }
+
+    private fun drawText(canvas: Canvas, index: Int, node: Node) {
+        if (mNodeNameList.size != mNodesCount) {
+            Log.e(TAG, "drawText not work because node name list not equals node count")
+            return
+        }
+        mPaint.reset()
+        mPaint.isAntiAlias = true
+        val textColor =
+                when {
+                    index < mCurStep -> mReachedNodeTextColor
+                    index == mCurStep -> mProgressingNodeTextColor
+                    else -> mUnreachedNodeTextColor
                 }
+        val text = mNodeNameList[index]
+        mPaint.textSize = mNodeNameTextSize
+        mPaint.color = textColor
+        val rect = Rect()
+        mPaint.getTextBounds(text, 0, text.length, rect)
+        val startX = node.point.x + mNodeRadius - rect.width() / 2
+        val startY = node.point.y + mNodeRadius * 2 + mNodeNameMarginTop + rect.height()
+        canvas.drawText(text, 0, text.length, startX.toFloat(), startY.toFloat(), mPaint)
+    }
+
+    private fun drawDebugLine(node: Node, canvas: Canvas) {
+        if (mIsDebugMode) {
+            mPaint.reset()
+            node.run {
+                mPaint.style = Paint.Style.STROKE
+                canvas.drawRect(point.x.toFloat(), point.y.toFloat(), (point.x + mNodeRadius * 2).toFloat(), (point.y + mNodeRadius * 2).toFloat(), mPaint)
+                canvas.drawLine(point.x.toFloat() + mNodeRadius, 0F, point.x.toFloat() + mNodeRadius, mHeight.toFloat(), mPaint)
+                canvas.drawLine(0F, mHeight / 2F, mWidth.toFloat(), mHeight / 2F, mPaint)
             }
         }
     }

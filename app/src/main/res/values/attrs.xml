@@ -2,6 +2,12 @@
 <resources>
 
     <declare-styleable name="StatusProgressView">
+        <attr name="nodeNameArray" format="reference" />
+        <attr name="nodeNameMarginTop" format="dimension" />
+        <attr name="nodeNameTextSize" format="dimension" />
+        <attr name="reachedNodeTextColor" format="color" />
+        <attr name="unreachedNodeTextColor" format="color" />
+        <attr name="progressingNodeTextColor" format="color" />
         <attr name="nodesNum" format="integer" /> <!-- 节点数量 -->
         <attr name="nodeRadius" format="dimension" />
         <attr name="progressingDrawable" format="reference" /> <!--进行中节点图标-->
