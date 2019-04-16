@@ -31,6 +31,8 @@ class StatusProgressView @JvmOverloads constructor(
     private var mNodesCount = 0
     // 当前节点序号
     private var mCurStep = 0
+    // 当前提示信息位置
+    private var mCurTipIndex = 0
 
     private var mDrawableProcessing: Drawable?
     private var mDrawableUnreached: Drawable?
@@ -52,11 +54,16 @@ class StatusProgressView @JvmOverloads constructor(
     private var mReachedNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
     private var mUnreachedNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
     private var mProgressingNodeTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
+    private var mProgressingTipTextColor = DEFAULT_NODE_NAME_TEXT_COLOR
+    private var mProgressingTipTextSize = DEFAULT_NODE_NAME_TEXT_SIZE
+    private var mProgressingTipText: CharSequence = ""
 
     private var mNodeList = listOf<Node>()
 
     private var mPaint = Paint()
     private var mTextFontMetircs = Paint.FontMetrics()
+    private val mRect: Rect = Rect()
+
 
     init {
         val mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.StatusProgressView)
@@ -81,6 +88,9 @@ class StatusProgressView @JvmOverloads constructor(
         mReachedNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_reachedNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
         mUnreachedNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_unreachedNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
         mProgressingNodeTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_progressingNodeTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
+        mProgressingTipTextColor = mTypedArray.getColor(R.styleable.StatusProgressView_progressingTipTextColor, DEFAULT_NODE_NAME_TEXT_COLOR)
+        mProgressingTipTextSize = mTypedArray.getDimension(R.styleable.StatusProgressView_progressingTipTextSize, DEFAULT_NODE_NAME_TEXT_SIZE)
+        mProgressingTipText = mTypedArray.getString(R.styleable.StatusProgressView_progressingTipText) ?: ""
 
         if (mNodesCount <= 1) {
             mNodesCount = 2
@@ -102,13 +112,21 @@ class StatusProgressView @JvmOverloads constructor(
         invalidate()
     }
 
+    fun setCurrentTip(index: Int, tipText: CharSequence) {
+        if (index < 0 || index > mNodesCount) {
+            Log.e(TAG, "index is Illegal")
+            return
+        }
+        Log.d(TAG, "setCurrentTip,index:$index,tip:$tipText")
+        mCurTipIndex = index
+        mProgressingTipText = tipText
+        invalidate()
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         if (mNodeNameList.isNotEmpty() && layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
-            val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
             val widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
-            val heightMode = MeasureSpec.getMode(heightMeasureSpec)
-            val heightSize = MeasureSpec.getSize(heightMeasureSpec)
             mPaint.textSize = mNodeNameTextSize
             mTextFontMetircs = mPaint.fontMetrics
             val customHeightSize = paddingTop + mNodeRadius * 2 + mNodeNameMarginTop + (mTextFontMetircs.bottom - mTextFontMetircs.top) + paddingBottom
@@ -157,7 +175,6 @@ class StatusProgressView @JvmOverloads constructor(
         mPaint.reset()
         mPaint.isAntiAlias = true
         val fNodeRadius = mNodeRadius.toFloat()
-        val fHeight = mHeight.toFloat()
         val fLineHeight = mLineHeight.toFloat()
         mPaint.color = mReachedLineColor
         mPaint.strokeWidth = fLineHeight
@@ -178,6 +195,9 @@ class StatusProgressView @JvmOverloads constructor(
             drawNode(canvas, index, node)
             drawText(canvas, index, node)
             drawDebugLine(node, canvas)
+            if (index == mCurTipIndex) {
+                drawTipText(canvas, node)
+            }
         }
 
     }
@@ -212,10 +232,25 @@ class StatusProgressView @JvmOverloads constructor(
         val text = mNodeNameList[index]
         mPaint.textSize = mNodeNameTextSize
         mPaint.color = textColor
-        val rect = Rect()
-        mPaint.getTextBounds(text, 0, text.length, rect)
-        val startX = node.point.x + mNodeRadius - rect.width() / 2
-        val startY = node.point.y + mNodeRadius * 2 + mNodeNameMarginTop + rect.height()
+        mPaint.getTextBounds(text, 0, text.length, mRect)
+        val startX = node.point.x + mNodeRadius - mRect.width() / 2
+        val startY = node.point.y + mNodeRadius * 2 + mNodeNameMarginTop + mRect.height()
+        canvas.drawText(text, 0, text.length, startX.toFloat(), startY.toFloat(), mPaint)
+    }
+
+    private fun drawTipText(canvas: Canvas, node: Node) {
+        if (mProgressingTipText.isEmpty()) {
+            return
+        }
+        mPaint.reset()
+        mPaint.isAntiAlias = true
+        mPaint.textSize = mProgressingTipTextSize
+        mPaint.color = mProgressingTipTextColor
+        val text = mProgressingTipText.toString()
+        mPaint.getTextBounds(text, 0, text.length, mRect)
+        val startX = node.point.x + mNodeRadius - mRect.width() / 2
+        // 系数为行距
+        val startY = node.point.y - mRect.height() * 0.8
         canvas.drawText(text, 0, text.length, startX.toFloat(), startY.toFloat(), mPaint)
     }
 

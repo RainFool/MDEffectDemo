@@ -8,6 +8,9 @@
         <attr name="reachedNodeTextColor" format="color" />
         <attr name="unreachedNodeTextColor" format="color" />
         <attr name="progressingNodeTextColor" format="color" />
+        <attr name="progressingTipTextColor" format="color" />
+        <attr name="progressingTipTextSize" format="dimension" />
+        <attr name="progressingTipText" format="string" />
         <attr name="nodesNum" format="integer" /> <!-- 节点数量 -->
         <attr name="nodeRadius" format="dimension" />
         <attr name="progressingDrawable" format="reference" /> <!--进行中节点图标-->
