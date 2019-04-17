@@ -113,9 +113,10 @@ class StatusProgressView @JvmOverloads constructor(
     }
 
     fun setCurrentTip(index: Int, tipText: CharSequence) {
-        if (index < 0 || index > mNodesCount) {
-            Log.e(TAG, "index is Illegal")
-            return
+        mCurTipIndex = when {
+            index < 0 -> -1
+            index > mNodesCount -> mNodesCount
+            else -> index
         }
         Log.d(TAG, "setCurrentTip,index:$index,tip:$tipText")
         mCurTipIndex = index
