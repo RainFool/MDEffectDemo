@@ -104,14 +104,16 @@
             android:label="common pool" />
         <activity android:name=".service.StartServiceActivity"></activity>
         <activity android:name=".customview.StatusProgressActivity"></activity>
-        <activity android:name=".textview.TextViewTestActivity"></activity>
-        <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity">
+        <activity android:name=".textview.TextViewTestActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity">
+
         </activity>
     </application>
 
