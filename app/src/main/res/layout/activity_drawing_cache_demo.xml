@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rainfool.md.drawing.DrawingCacheDemoActivity">
+
+
+    <Button
+        android:id="@+id/mButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Drawing cache" />
+
+    <ImageView
+        android:id="@+id/iv_drawable"
+        android:layout_width="@dimen/dp70"
+        android:layout_height="@dimen/dp70"
+        android:layout_below="@id/mButton"
+        android:src="@drawable/accompany_layer_status_node_processing" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/dp70"
+        android:layout_height="@dimen/dp70"
+        android:layout_alignTop="@id/iv_drawable"
+        android:layout_toRightOf="@id/iv_drawable"
+        android:src="@drawable/ic_check_black_24dp" />
+
+    <ProgressBar
+        android:layout_width="@dimen/dp70"
+        android:layout_height="@dimen/dp70"
+        android:layout_alignTop="@id/iv_drawable"
+        android:layout_toRightOf="@id/iv_icon" />
+
+
+    <ImageView
+        android:id="@+id/mIvPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_drawable"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitCenter" />
+
+</RelativeLayout>
