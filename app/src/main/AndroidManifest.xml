@@ -41,13 +41,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recyclerview.HorizontalRecyclerViewActivity">
+        <activity android:name=".crop.CropImageDemoActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".recyclerview.HorizontalRecyclerViewActivity">
         </activity>
         <activity android:name=".MainActivity" />
         <activity
@@ -60,8 +62,7 @@
         <activity
             android:name=".popup.PopupTestActivity"
             android:theme="@style/PopTheme" />
-        <activity android:name=".recyclerview.RecyclerViewDemoActivity">
-        </activity>
+        <activity android:name=".recyclerview.RecyclerViewDemoActivity"></activity>
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
             android:name=".softinput.SoftInputTestActivity"
@@ -103,7 +104,7 @@
             android:label="common pool" />
         <activity android:name=".service.StartServiceActivity" />
         <activity android:name=".customview.StatusProgressActivity" />
-        <activity android:name=".textview.TextViewTestActivity"></activity>
+        <activity android:name=".textview.TextViewTestActivity" />
         <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
         <activity android:name=".drawing.DrawingCacheDemoActivity" />
     </application>
