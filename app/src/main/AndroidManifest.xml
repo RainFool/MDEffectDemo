@@ -18,28 +18,18 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- bugly require this permission -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- bugly require this permission -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- dream wifi -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!-- dream wifi -->
-
-
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- dream wifi -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- dream wifi -->
     <!-- shortcut -->
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-
-    <!-- zxing -->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" /> <!-- zxing -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
-    <!-- sync adapter -->
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- sync adapter -->
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
@@ -51,6 +41,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".recyclerview.HorizontalRecyclerViewActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".immersion.ImmersionActivity"
@@ -62,7 +60,8 @@
         <activity
             android:name=".popup.PopupTestActivity"
             android:theme="@style/PopTheme" />
-        <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
+        <activity android:name=".recyclerview.RecyclerViewDemoActivity">
+        </activity>
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
             android:name=".softinput.SoftInputTestActivity"
@@ -104,15 +103,9 @@
             android:label="common pool" />
         <activity android:name=".service.StartServiceActivity" />
         <activity android:name=".customview.StatusProgressActivity" />
-        <activity android:name=".textview.TextViewTestActivity">
-        </activity>
-        <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity"></activity>
-        <activity android:name=".drawing.DrawingCacheDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+        <activity android:name=".textview.TextViewTestActivity"></activity>
+        <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
+        <activity android:name=".drawing.DrawingCacheDemoActivity" />
     </application>
 
 </manifest>

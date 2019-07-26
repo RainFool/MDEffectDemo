@@ -15,13 +15,13 @@ import java.util.List;
  * @author rainfool
  * @date 2018/1/16
  */
-public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.SimpleNumberViewHolder> {
+public class SimplePriceAdapter extends RecyclerView.Adapter<SimplePriceAdapter.SimpleNumberViewHolder> {
 
     private static final String TAG = "SimpleNumberAdapter";
 
     private List<String> mDataList;
 
-    public SimpleStringAdapter(List<String> mDataList) {
+    public SimplePriceAdapter(List<String> mDataList) {
         this.mDataList = mDataList;
     }
 
