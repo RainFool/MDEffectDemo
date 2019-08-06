@@ -16,6 +16,6 @@ class CommonRecyclerPoolActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.rv_common_recycler_pool)
         mRecyclerView.adapter = SimpleNumberAdapter(100)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mRecyclerView.recycledViewPool = CustomRecyclerViewPool
+        mRecyclerView.setRecycledViewPool(CustomRecyclerViewPool)
     }
 }

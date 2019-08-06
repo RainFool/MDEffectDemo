@@ -25,42 +25,42 @@ class LogBehavior : CoordinatorLayout.Behavior<View>() {
 
     }
 
-    override fun onInterceptTouchEvent(parent: CoordinatorLayout?, child: View?, ev: MotionEvent?): Boolean {
+    override fun onInterceptTouchEvent(parent: CoordinatorLayout, child: View, ev: MotionEvent): Boolean {
         Log.d(TAG, "onInterceptTouchEvent")
 
         return true
     }
 
-    override fun onTouchEvent(parent: CoordinatorLayout?, child: View?, ev: MotionEvent?): Boolean {
+    override fun onTouchEvent(parent: CoordinatorLayout, child: View, ev: MotionEvent): Boolean {
         Log.d(TAG, "onTouchEvent ${ev?.action}")
 
         return super.onTouchEvent(parent, child, ev)
     }
 
-    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+    override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         Log.d(TAG, "layoutDependsOn:child:${child?.id},dependency:${dependency?.id}")
 
         return true
     }
 
-    override fun onDependentViewChanged(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+    override fun onDependentViewChanged(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         Log.d(TAG, "onDependentViewChanged")
 
         return super.onDependentViewChanged(parent, child, dependency)
     }
 
-    override fun onDependentViewRemoved(parent: CoordinatorLayout?, child: View?, dependency: View?) {
+    override fun onDependentViewRemoved(parent: CoordinatorLayout, child: View, dependency: View) {
         Log.d(TAG, "onDependentViewRemoved")
 
         super.onDependentViewRemoved(parent, child, dependency)
     }
 
-    override fun onMeasureChild(parent: CoordinatorLayout?, child: View?, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
+    override fun onMeasureChild(parent: CoordinatorLayout, child: View, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
         Log.d(TAG, "onMeasureChild,child:${child?.id}")
         return super.onMeasureChild(parent, child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed)
     }
 
-    override fun onLayoutChild(parent: CoordinatorLayout?, child: View?, layoutDirection: Int): Boolean {
+    override fun onLayoutChild(parent: CoordinatorLayout, child: View, layoutDirection: Int): Boolean {
         Log.d(TAG, "onLayoutChild,child:${child?.id}")
 
         return super.onLayoutChild(parent, child, layoutDirection)
@@ -106,7 +106,7 @@ class LogBehavior : CoordinatorLayout.Behavior<View>() {
         return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY)
     }
 
-    override fun onApplyWindowInsets(coordinatorLayout: CoordinatorLayout?, child: View?, insets: WindowInsetsCompat?): WindowInsetsCompat {
+    override fun onApplyWindowInsets(coordinatorLayout: CoordinatorLayout, child: View, insets: WindowInsetsCompat): WindowInsetsCompat {
         Log.d(TAG, "onApplyWindowInsets,child:${child?.id}")
 
         return super.onApplyWindowInsets(coordinatorLayout, child, insets)
