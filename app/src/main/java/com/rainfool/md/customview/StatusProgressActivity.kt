@@ -2,7 +2,7 @@ package com.rainfool.md.customview
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.rainfool.md.R
 import kotlinx.android.synthetic.main.activity_status_progress.*

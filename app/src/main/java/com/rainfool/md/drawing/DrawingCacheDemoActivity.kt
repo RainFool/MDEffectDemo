@@ -2,7 +2,7 @@ package com.rainfool.md.drawing
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.rainfool.md.R
 import kotlinx.android.synthetic.main.activity_drawing_cache_demo.*
 

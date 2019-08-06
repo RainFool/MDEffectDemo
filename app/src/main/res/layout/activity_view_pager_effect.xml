@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.rainfool.md.viewpager.ViewPagerEffectActivity">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/banner_viewpager"
         android:layout_width="match_parent"
         android:layout_height="200dp"

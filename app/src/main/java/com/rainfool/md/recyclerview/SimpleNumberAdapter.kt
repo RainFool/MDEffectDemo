@@ -1,6 +1,6 @@
 package com.rainfool.md.recyclerview
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import com.rainfool.md.R
  * @author rainfool
  * @date 2018/1/16
  */
-class SimpleNumberAdapter : RecyclerView.Adapter<SimpleNumberAdapter.SimpleNumberViewHolder> {
+class SimpleNumberAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<SimpleNumberAdapter.SimpleNumberViewHolder> {
 
     private val TAG = "SimpleNumberAdapter"
 
@@ -50,7 +50,7 @@ class SimpleNumberAdapter : RecyclerView.Adapter<SimpleNumberAdapter.SimpleNumbe
     }
 
 
-    inner class SimpleNumberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class SimpleNumberViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         private var textView: TextView = itemView.findViewById(R.id.tv_simple_demo)
 

@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.CallSuper;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import android.view.View;
 import android.view.ViewGroup;
 

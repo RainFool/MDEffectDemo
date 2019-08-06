@@ -2,7 +2,7 @@ package com.rainfool.md.spannable;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Layout;
 import android.text.SpannedString;
 import android.text.style.ClickableSpan;

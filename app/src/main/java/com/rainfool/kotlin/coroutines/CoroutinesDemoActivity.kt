@@ -1,7 +1,7 @@
 package com.rainfool.kotlin.coroutines
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.rainfool.kotlin.coroutines.callback.CallbackError
 import com.rainfool.kotlin.coroutines.callback.DataCallback

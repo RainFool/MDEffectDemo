@@ -2,7 +2,7 @@ package com.rainfool.kotlin.coroutines.callback;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 网络回调统一 Callback ，默认在主线程回调

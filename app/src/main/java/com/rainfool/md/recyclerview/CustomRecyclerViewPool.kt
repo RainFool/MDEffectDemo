@@ -1,6 +1,6 @@
 package com.rainfool.md.recyclerview
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  *
@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
  * @author rainfool
  * @date 2018/10/25
  */
-object CustomRecyclerViewPool : RecyclerView.RecycledViewPool() {
+object CustomRecyclerViewPool : androidx.recyclerview.widget.RecyclerView.RecycledViewPool() {
 
     init {
 
