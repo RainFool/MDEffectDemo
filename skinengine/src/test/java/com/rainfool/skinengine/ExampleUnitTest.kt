@@ -1,4 +1,4 @@
-package com.rainfool.skinengin
+package com.rainfool.skinengine
 
 import org.junit.Test
 

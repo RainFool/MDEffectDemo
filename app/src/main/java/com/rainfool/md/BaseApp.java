@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.rainfool.skinengine.SkinEngine;
 
 /**
  * @author rainfool
@@ -18,6 +19,7 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        SkinEngine.getInstance().init(this);
         gContext = this;
     }
 }
