@@ -5,7 +5,7 @@ import android.content.res.Resources;
 public interface ILoadTaskListener {
     void onStart();
 
-    void onSuccess(Resources resources);
+    void onSuccess(Resources resources, String packageName);
 
     void onFailed();
 }

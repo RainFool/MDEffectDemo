@@ -25,29 +25,19 @@ public class SkinEngine {
         return InstanceHolder.INSTANCE;
     }
 
+    private Application mApp;
 
     private SkinEngine() {
     }
 
     public void init(Application app) {
-        SKIN_DIR = app.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + File.separator + SKIN_NAME;
+        this.mApp = app;
+    }
 
-        ISkinLoader skinLoader = new SkinLoader(app);
-        skinLoader.load(SKIN_DIR, new ILoadTaskListener() {
-            @Override
-            public void onStart() {
-                Log.d(TAG, "onStart: ");
-            }
+    public void startLoad(ILoadTaskListener listener) {
+        SKIN_DIR = mApp.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + File.separator + SKIN_NAME;
 
-            @Override
-            public void onSuccess(Resources resources) {
-                Log.d(TAG, "onSuccess: ");
-            }
-
-            @Override
-            public void onFailed() {
-                Log.d(TAG, "onFailed: ");
-            }
-        });
+        ISkinLoader skinLoader = new SkinLoader(mApp);
+        skinLoader.load(SKIN_DIR, listener);
     }
 }

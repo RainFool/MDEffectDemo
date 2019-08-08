@@ -35,7 +35,7 @@ public class LoadTask implements Runnable {
         PackageManager mPm = mContext.getPackageManager();
         try {
             PackageInfo mInfo = mPm.getPackageArchiveInfo(mSkinFilePath, PackageManager.GET_ACTIVITIES);
-
+            String packageName = mInfo.packageName;
 
             AssetManager assetManager = AssetManager.class.newInstance();
             Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
@@ -45,7 +45,7 @@ public class LoadTask implements Runnable {
             Resources superRes = mContext.getResources();
             Resources skinResource = new Resources(assetManager, superRes.getDisplayMetrics(), superRes.getConfiguration());
 
-            mListener.onSuccess(skinResource);
+            mListener.onSuccess(skinResource, packageName);
         } catch (Exception e) {
             e.printStackTrace();
             mListener.onFailed();
