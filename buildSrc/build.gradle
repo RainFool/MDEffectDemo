@@ -19,7 +19,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.4.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
     }
 
@@ -35,12 +35,12 @@ apply plugin: 'kotlin'
 
 
 dependencies {
-    compile gradleApi()
-    compile localGroovy()
-    compile 'com.android.tools.build:gradle:3.0.1'
-    compile 'com.android.tools.build:transform-api:1.5.0'
-    compile 'com.squareup:javapoet:1.10.0'
-    compile 'org.javassist:javassist:3.23.1-GA'
+//    implementation gradleApi()
+//    implementation localGroovy()
+//    implementation 'com.android.tools.build:gradle:3.0.1'
+//    implementation 'com.android.tools.build:transform-api:1.5.0'
+    implementation 'com.squareup:javapoet:1.10.0'
+    implementation 'org.javassist:javassist:3.23.1-GA'
     implementation 'com.github.javaparser:javaparser-core:3.5.14'
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"

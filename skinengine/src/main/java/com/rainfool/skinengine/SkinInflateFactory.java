@@ -21,6 +21,7 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
     private static final String TAG = "SkinInflateFactory";
 
     public static final String BACKGROUND = "background";
+    public static final String STYLE = "style";
 
 
     private List<SkinItem> mSkinItems = new ArrayList<>();
@@ -81,7 +82,7 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
             Log.d(TAG, "recordViewAndAttributes: att name:" + attrs.getAttributeName(i));
             String attrName = attrs.getAttributeName(i);
             String attrValue = attrs.getAttributeValue(i);
-            if (!BACKGROUND.equals(attrName)) {
+            if (!STYLE.equals(attrName)) {
                 continue;
             }
             if (attrValue.startsWith("@")) {
