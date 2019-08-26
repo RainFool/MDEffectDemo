@@ -1,17 +1,15 @@
 package com.rainfool.md.inflater
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.rainfool.md.R
-import hugo.weaving.DebugLog
 
 class LayoutInflaterActivity : AppCompatActivity() {
 
     private lateinit var mInflater : LayoutInflater;
 
-    @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +24,6 @@ class LayoutInflaterActivity : AppCompatActivity() {
         inflater1()
     }
 
-    @DebugLog
     fun inflater1() : View {
         return mInflater.inflate(R.layout.layout_inflater_test,null)
 

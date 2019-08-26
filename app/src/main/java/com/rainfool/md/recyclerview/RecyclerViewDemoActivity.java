@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 
 import com.rainfool.md.R;
 
-import hugo.weaving.DebugLog;
-
 /**
  * @author rainfool
  */
@@ -47,7 +45,6 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
 
 
         @Override
-        @DebugLog
         public ContainerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             Log.d(TAG, "onCreateViewHolder: main");
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -56,7 +53,6 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         }
 
         @Override
-        @DebugLog
         public void onBindViewHolder(ContainerViewHolder holder, int position) {
             Log.d(TAG, "onBindViewHolder: main" + position);
             SimpleNumberAdapter adapter = new SimpleNumberAdapter(position,5);
