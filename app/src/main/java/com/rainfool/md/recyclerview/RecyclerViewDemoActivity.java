@@ -53,7 +53,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(ContainerViewHolder holder, int position) {
+         public void onBindViewHolder(ContainerViewHolder holder, int position) {
             Log.d(TAG, "onBindViewHolder: main" + position);
             SimpleNumberAdapter adapter = new SimpleNumberAdapter(position,5);
             holder.mainItemRecyclerView.setAdapter(adapter);

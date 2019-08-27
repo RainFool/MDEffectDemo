@@ -41,17 +41,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".skin.SkinDemoActivity">
+        <activity android:name="com.rainfool.dex.DexLoaderTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".crop.CropImageDemoActivity">
+        <activity android:name=".skin.SkinDemoActivity">
 
         </activity>
-        <activity android:name=".recyclerview.HorizontalRecyclerViewActivity"></activity>
+        <activity android:name=".crop.CropImageDemoActivity"></activity>
+        <activity android:name=".recyclerview.HorizontalRecyclerViewActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".immersion.ImmersionActivity"
