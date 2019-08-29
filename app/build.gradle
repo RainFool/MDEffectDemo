@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: 'tinkerpatch.gradle'
 //apply plugin: 'com.jakewharton.hugo'
 
 android {
@@ -11,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.rainfo.md"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -50,5 +51,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
 
-
+    //若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+    annotationProcessor "com.tinkerpatch.tinker:tinker-android-anno:${TINKER_VERSION}"
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 }

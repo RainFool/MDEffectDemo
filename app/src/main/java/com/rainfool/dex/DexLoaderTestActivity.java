@@ -30,7 +30,7 @@ public class DexLoaderTestActivity extends AppCompatActivity {
     }
 
     public void onCalculateClicked(View view) {
-        int result = 2 / 6;
+        int result = 2 / 0;
         Toast.makeText(this, "success", Toast.LENGTH_LONG).show();
     }
 }
