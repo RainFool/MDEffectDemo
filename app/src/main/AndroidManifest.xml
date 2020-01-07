@@ -41,11 +41,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.rainfool.dex.DexLoaderTestActivity"></activity>
-        <activity android:name=".skin.SkinDemoActivity">
+        <activity android:name=".broadcast.BroadcastTestActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".crop.CropImageDemoActivity"></activity>
+        <activity android:name="com.rainfool.dex.DexLoaderTestActivity" />
+        <activity android:name=".skin.SkinDemoActivity"></activity>
+        <activity android:name=".crop.CropImageDemoActivity" />
         <activity android:name=".recyclerview.HorizontalRecyclerViewActivity" />
         <activity android:name=".MainActivity" />
         <activity
@@ -57,9 +63,7 @@
         <activity android:name=".coordinator.CoordinatorWithFabActivity" />
         <activity
             android:name=".popup.PopupTestActivity"
-            android:theme="@style/PopTheme">
-
-        </activity>
+            android:theme="@style/PopTheme"></activity>
         <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
         <activity android:name=".recyclerview.ReverseRecyclerActivity" />
         <activity
@@ -100,13 +104,7 @@
         <activity
             android:name=".recyclerview.CommonRecyclerPoolActivity"
             android:label="common pool" />
-        <activity android:name=".service.StartServiceActivity" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".service.StartServiceActivity">
         </activity>
         <activity android:name=".customview.StatusProgressActivity" />
         <activity android:name=".textview.TextViewTestActivity" />
