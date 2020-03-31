@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +23,10 @@ import android.widget.Toast;
 
 import com.rainfool.md.R;
 
-public class PopupTestActivity extends Activity {
+public class PopupTestActivity extends AppCompatActivity {
 
     private static final String TAG = "PopupTestActivity";
-
-    RecyclerView mRecyclerView;
+    private PopupFragment mFragment;
 
 
     @Override
@@ -39,40 +39,6 @@ public class PopupTestActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_test);
-        mRecyclerView = findViewById(R.id.rv_content);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(new RecyclerView.Adapter() {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-                return new PopupHolder(view);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-                ((TextView) holder.itemView).setText(position + "");
-            }
-
-            @Override
-            public int getItemCount() {
-                return 100;
-            }
-        });
-    }
-
-    private class PopupHolder extends RecyclerView.ViewHolder {
-
-        public PopupHolder(@NonNull View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showPopup(v);
-                }
-            });
-        }
-
     }
 
     private void showPopup(View v) {
@@ -110,5 +76,18 @@ public class PopupTestActivity extends Activity {
         final int[] location = new int[2];
         view.getLocationInWindow(location);
         return new Rect(location[0], location[1], location[0] + view.getWidth(), location[1] + view.getHeight());
+    }
+
+    public void onAddFragmentClicked(View view) {
+        mFragment = new PopupFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, mFragment)
+                .commit();
+    }
+
+    public void onRemoveFragmentClicked(View view) {
+        getFragmentManager().beginTransaction()
+                .remove(mFragment)
+                .commit();
     }
 }

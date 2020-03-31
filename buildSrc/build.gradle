@@ -9,14 +9,28 @@ buildscript {
 
     repositories {
         mavenLocal()
+        jcenter()
         maven {
-            url "http://nexus.huya.com:8081/repository/maven-public/"
+            url "https://mirrors.tencent.com/nexus/repository/maven-public/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/repository/maven/tencent_public/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/repository/maven/thirdparty/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/jcenter/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/google/"
+        }
+        maven {
+            url "https://jitpack.io"
         }
         maven {
             url 'https://maven.google.com'
         }
-        jcenter()
-        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
@@ -50,10 +64,25 @@ repositories {
     mavenLocal()
     jcenter()
     maven {
-        url 'https://maven.google.com'
+        url "https://mirrors.tencent.com/nexus/repository/maven-public/"
     }
     maven {
-        url "http://nexus.huya.com:8081/repository/maven-public/"
+        url "https://mirrors.tencent.com/repository/maven/tencent_public/"
+    }
+    maven {
+        url "https://mirrors.tencent.com/repository/maven/thirdparty/"
+    }
+    maven {
+        url "https://mirrors.tencent.com/nexus/repository/jcenter/"
+    }
+    maven {
+        url "https://mirrors.tencent.com/nexus/repository/google/"
+    }
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url 'https://maven.google.com'
     }
     google()
 }

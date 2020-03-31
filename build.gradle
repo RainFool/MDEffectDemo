@@ -5,8 +5,12 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {
+            url "http://mirrors.tencent.com/repository/maven-public/"
+        }
+        maven {
             url 'https://maven.google.com'
         }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
@@ -24,7 +28,28 @@ allprojects {
     repositories {
         jcenter()
         maven {
+            url "https://mirrors.tencent.com/nexus/repository/maven-public/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/repository/maven/tencent_public/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/repository/maven/thirdparty/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/jcenter/"
+        }
+        maven {
+            url "https://mirrors.tencent.com/nexus/repository/google/"
+        }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
             url 'https://maven.google.com'
+        }
+        jcenter {
+            
         }
     }
 }
