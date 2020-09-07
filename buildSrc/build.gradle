@@ -88,23 +88,23 @@ repositories {
 }
 
 sourceSets {
-    main {
-        groovy {
-            srcDir 'src/main/java'
-        }
-
-        kotlin {
-            srcDir 'src/main/java'
-        }
-
-        java {
-            srcDir 'src/main/java'
-        }
-
-        resources {
-            srcDir 'src/main/resources'
-        }
-    }
+//    main {
+//        groovy {
+//            srcDir 'src/main/java'
+//        }
+//
+//        kotlin {
+//            srcDir 'src/main/java'
+//        }
+//
+//        java {
+//            srcDir 'src/main/java'
+//        }
+//
+//        resources {
+//            srcDir 'src/main/resources'
+//        }
+//    }
 }
 
 sourceCompatibility = "1.7"
