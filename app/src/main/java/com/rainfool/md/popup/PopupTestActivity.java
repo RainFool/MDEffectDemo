@@ -80,14 +80,15 @@ public class PopupTestActivity extends AppCompatActivity {
 
     public void onAddFragmentClicked(View view) {
         mFragment = new PopupFragment();
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, mFragment)
                 .commit();
     }
 
     public void onRemoveFragmentClicked(View view) {
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .remove(mFragment)
                 .commit();
+        mFragment = null;
     }
 }

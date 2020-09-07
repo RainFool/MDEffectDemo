@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import com.rainfool.md.R
 import kotlinx.android.synthetic.main.activity_horizontal_recycler_view.*
 
@@ -19,16 +20,16 @@ class HorizontalRecyclerViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_horizontal_recycler_view)
 
-        mRvHorizontal.layoutManager = HorizontalEqualLayoutManager(this, androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL, false)
+        mRvHorizontal.layoutManager = GridLayoutManager(this, 3)
 
         mRvHorizontal.adapter = SimplePriceAdapter(mDataList.map { it.toString() })
 
-        mRvHorizontal.viewTreeObserver.addOnPreDrawListener {
-            Log.d(TAG, "onlayout ${mRvHorizontal.width},${mRvHorizontal.measuredWidth}")
-            if (mRvHorizontal.measuredWidth < 800) {
-
-            }
-            true
-        }
+//        mRvHorizontal.viewTreeObserver.addOnPreDrawListener {
+//            Log.d(TAG, "onlayout ${mRvHorizontal.width},${mRvHorizontal.measuredWidth}")
+//            if (mRvHorizontal.measuredWidth < 800) {
+//
+//            }
+//            true
+//        }
     }
 }

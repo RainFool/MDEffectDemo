@@ -44,6 +44,7 @@ dependencies {
     implementation project(':anotation')
     implementation project(':skinengine')
     implementation project(':dexloader')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt project(path: ':processor')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

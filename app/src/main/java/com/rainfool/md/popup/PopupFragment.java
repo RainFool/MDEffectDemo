@@ -1,9 +1,7 @@
 package com.rainfool.md.popup;
 
-import android.app.Fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.rainfool.md.R;
 
@@ -56,12 +55,13 @@ public class PopupFragment extends Fragment {
                 Toast.makeText(v.getContext(), "tv in popup click", Toast.LENGTH_LONG).show();
             }
         });
-        PopupWindow popupWindow = new CustomPopupWindow(rootView, WindowManager.LayoutParams.MATCH_PARENT,
+        CustomPopupWindow popupWindow = new CustomPopupWindow(rootView, WindowManager.LayoutParams.MATCH_PARENT,
                 400);
-        popupWindow.setOutsideTouchable(true);
+        popupWindow.setOutsideTouchable(false);
         popupWindow.setFocusable(false);
         popupWindow.setAnimationStyle(0);
         popupWindow.showAsDropDown(v, 0, 60);
+        popupWindow.ensureDismiss(getLifecycle());
     }
 
 }
