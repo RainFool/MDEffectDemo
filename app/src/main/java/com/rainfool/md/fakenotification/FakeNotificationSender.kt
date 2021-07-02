@@ -5,4 +5,10 @@ package com.rainfool.md.fakenotification
  * @author krystian
  */
 class FakeNotificationSender(fakeNotificationContainer: FakeNotificationContainer) {
+
+    fun addTask(senderTask: SenderTask) {
+
+    }
+
+    data class SenderTask(val submitTimestamp: Long)
 }
