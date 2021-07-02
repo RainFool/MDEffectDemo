@@ -5,14 +5,9 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.rainfool.md.common.RobolectricPowerMockCommon
 import io.mockk.mockk
-import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
-import org.mockito.Mockito
-import org.powermock.api.mockito.PowerMockito
-import org.powermock.core.classloader.annotations.PrepareForTest
-import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  *
@@ -53,7 +48,7 @@ internal class FakeNotificationSenderTest : RobolectricPowerMockCommon() {
             override fun generateContentView() = contentView
 
         }
-        val task = FakeNotificationSender.SenderTask(System.currentTimeMillis(), 0, listener)
+        val task = FakeNotificationSender.SenderTask(System.currentTimeMillis(), 0, listener, 0)
         sender.addTask(task)
         verify(container, times(1)).addContentView(contentView)
     }

@@ -16,7 +16,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerVertical="true"
-    android:text="测试加入" />
+    android:text="测试加入类型1" />
+
+  <Button
+    android:id="@+id/btnAdd2"
+    android:layout_width="wrap_content"
+    android:layout_below="@id/btnAdd"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:text="测试加入类型2" />
 
   <Button
     android:id="@+id/btnRemove"
