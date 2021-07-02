@@ -1,21 +1,41 @@
 package com.rainfool.md.fakenotification
 
+import android.view.View
+import com.nhaarman.mockitokotlin2.times
+import com.nhaarman.mockitokotlin2.verify
 import com.rainfool.md.common.RobolectricPowerMockCommon
-import org.hamcrest.MatcherAssert
-import org.hamcrest.Matchers
+import io.mockk.mockk
+import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
+import org.mockito.Mockito
+import org.powermock.api.mockito.PowerMockito
+import org.powermock.core.classloader.annotations.PrepareForTest
+import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  *
  * @author krystian
  */
+//@PrepareForTest(FakeNotificationContainer::class, View::class, FakeNotificationSender::class)
 internal class FakeNotificationSenderTest : RobolectricPowerMockCommon() {
+
+//    @Rule
+//    @JvmField
+//    var rule = PowerMockRule()
+
+
+    private lateinit var contentView: View
+    private lateinit var container: FakeNotificationContainer
+    private lateinit var listener: FakeNotificationContainer.IFakeNotificationDismissListener
 
     @BeforeEach
     override fun setUp() {
         super.setUp()
+        listener = mockk()
+        contentView = mockk()
+        container = mockk(relaxed = true)
     }
 
     @AfterEach
@@ -23,7 +43,18 @@ internal class FakeNotificationSenderTest : RobolectricPowerMockCommon() {
     }
 
     @Test
-    fun testAdd() {
-        MatcherAssert.assertThat(8, Matchers.equalTo(8))
+    fun testAddTask() {
+
+        val sender = FakeNotificationSender(container)
+//        Mockito.`when`(container.addContentView(contentView)).doAnswer {
+//            sender.onFakeNotificationDismiss()
+//        }
+        val listener = object : FakeNotificationSender.IGenerateContentViewListener {
+            override fun generateContentView() = contentView
+
+        }
+        val task = FakeNotificationSender.SenderTask(System.currentTimeMillis(), 0, listener)
+        sender.addTask(task)
+        verify(container, times(1)).addContentView(contentView)
     }
 }

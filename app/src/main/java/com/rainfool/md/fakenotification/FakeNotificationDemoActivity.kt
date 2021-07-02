@@ -16,7 +16,7 @@ internal class FakeNotificationDemoActivity : BaseActivity() {
 
         val testView = LayoutInflater.from(this).inflate(R.layout.top_sheet_demo_item, null)
         btnAdd.setOnClickListener {
-            topSheetView.addViewContent(testView)
+            topSheetView.addContentView(testView)
         }
     }
 }

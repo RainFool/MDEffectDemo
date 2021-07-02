@@ -31,6 +31,8 @@ class FakeNotificationContainer : FrameLayout {
 
     private lateinit var contentViewContainer: FrameLayout
 
+    private var onDismissListener: IFakeNotificationDismissListener? = null
+
     private var needDismiss = false
 
     constructor(context: Context) : super(context) {
@@ -45,22 +47,10 @@ class FakeNotificationContainer : FrameLayout {
         initView(context)
     }
 
-    private fun initView(context: Context) {
-        contentViewContainer = FrameLayout(context)
-        val params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        addView(contentViewContainer, params)
-        mDetector = GestureDetector(context, TopSheetGestureListener(contentViewContainer))
-    }
-
-    fun addViewContent(content: View) {
+    fun addContentView(content: View) {
         reset()
         contentViewContainer.addView(content)
         appearAnim()
-    }
-
-    private fun reset() {
-        contentViewContainer.removeAllViews()
-        contentViewContainer.translationY = 0F
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -71,6 +61,22 @@ class FakeNotificationContainer : FrameLayout {
             }
         }
         return true
+    }
+
+    internal fun setOnDismissListener(listener: IFakeNotificationDismissListener) {
+        this.onDismissListener = listener
+    }
+
+    private fun initView(context: Context) {
+        contentViewContainer = FrameLayout(context)
+        val params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        addView(contentViewContainer, params)
+        mDetector = GestureDetector(context, TopSheetGestureListener(contentViewContainer))
+    }
+
+    private fun reset() {
+        contentViewContainer.removeAllViews()
+        contentViewContainer.translationY = 0F
     }
 
 
@@ -94,6 +100,7 @@ class FakeNotificationContainer : FrameLayout {
             override fun onAnimationEnd(animation: Animator?) {
                 super.onAnimationEnd(animation)
                 this@FakeNotificationContainer.visibility = View.GONE
+                onDismissListener?.onFakeNotificationDismiss()
             }
         })
         needDismiss = false
@@ -146,5 +153,8 @@ class FakeNotificationContainer : FrameLayout {
 
     }
 
+    interface IFakeNotificationDismissListener {
+        fun onFakeNotificationDismiss()
+    }
 
 }
