@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.unittest;
+package com.rainfool.mobileqq.unittest;
 
 import android.content.SharedPreferences;
 import androidx.annotation.Nullable;

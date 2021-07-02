@@ -1,6 +1,6 @@
 package org.robolectric.checker;
 
-import com.tencent.mobileqq.util.JvmTestUtil;
+import com.rainfool.mobileqq.util.JvmTestUtil;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.jmockit.mockuputils;
+package com.rainfool.mobileqq.jmockit.mockuputils;
 
 import java.net.MalformedURLException;
 import java.net.URL;

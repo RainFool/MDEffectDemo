@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.jmockit.mockuputils;
+package com.rainfool.mobileqq.jmockit.mockuputils;
 
 import java.io.File;
 import mockit.Invocation;

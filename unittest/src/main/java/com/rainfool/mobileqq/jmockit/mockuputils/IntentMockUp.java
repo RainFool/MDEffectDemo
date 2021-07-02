@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.jmockit.mockuputils;
+package com.rainfool.mobileqq.jmockit.mockuputils;
 
 import android.content.Context;
 import android.content.Intent;

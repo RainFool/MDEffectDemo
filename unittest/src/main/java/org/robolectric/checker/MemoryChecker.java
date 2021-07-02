@@ -1,6 +1,6 @@
 package org.robolectric.checker;
 
-import com.tencent.mobileqq.util.JvmTestUtil;
+import com.rainfool.mobileqq.util.JvmTestUtil;
 import java.lang.reflect.Method;
 import org.junit.runners.model.FrameworkMethod;
 import org.robolectric.internal.bytecode.Sandbox;

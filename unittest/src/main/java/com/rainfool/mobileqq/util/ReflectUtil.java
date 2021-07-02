@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.util;
+package com.rainfool.mobileqq.util;
 
 import androidx.annotation.NonNull;
 import java.lang.reflect.Constructor;

@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.jmockit.mockuputils;
+package com.rainfool.mobileqq.jmockit.mockuputils;
 
 import android.os.BaseBundle;
 import android.os.Bundle;

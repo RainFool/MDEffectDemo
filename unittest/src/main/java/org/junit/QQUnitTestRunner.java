@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Looper;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.util.ReflectUtil;
+import com.rainfool.mobileqq.util.ReflectUtil;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 

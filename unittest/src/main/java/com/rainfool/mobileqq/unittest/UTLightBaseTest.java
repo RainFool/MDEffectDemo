@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.unittest;
+package com.rainfool.mobileqq.unittest;
 
 import org.junit.QQUnitTestRunner;
 import org.junit.runner.RunWith;
