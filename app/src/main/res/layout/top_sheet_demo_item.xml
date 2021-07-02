@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginLeft="@dimen/dp20"
+  android:layout_marginRight="@dimen/dp20"
+  android:background="@drawable/top_sheet_item_bg"
+  android:id="@+id/guild_showcase_scheme_container"
+  android:orientation="vertical">
+
+  <ImageView
+    android:layout_width="@dimen/dp38"
+    android:layout_height="@dimen/dp38"
+    android:src="@drawable/accompany_layer_status_node_reached" />
+
+  <TextView
+    android:layout_alignParentRight="true"
+    android:text="测试测试测试测试测试测试测试"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+</RelativeLayout>

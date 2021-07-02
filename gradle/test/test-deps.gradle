@@ -1,0 +1,80 @@
+//测试库依赖配置
+apply from: rootProject.file('./gradle/test/test-dependencies.gradle')
+
+// 这个文件放jvm 配置，跟单测配置
+def cpuCoreNum = Runtime.runtime.availableProcessors() //获取机器的核心数
+android {
+    testOptions.unitTests.all {
+        //单测的jvm是与主构建分离的，单测统一在这里配置jvm
+        jvmArgs '-ea', '-noverify', '-Xmx512m', '-XX:+HeapDumpOnOutOfMemoryError', '-XX:OnOutOfMemoryError=mv java_pid*.hprof build/'
+        setIgnoreFailures(true)
+        testLogging {//指定打印日志类型
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            outputs.upToDateWhen { false }
+            showStandardStreams = true
+        }
+        include '**/*Test.class'//限定单测文件命名格式
+        if (cpuCoreNum >= 8) {//根据机器核心数确定并发进程数，加快执行速度
+            maxParallelForks = Runtime.runtime.availableProcessors() - 4
+        } else if (cpuCoreNum > 1) {
+            maxParallelForks = Runtime.runtime.availableProcessors() - 1
+        } else {
+            maxParallelForks = 1
+        }
+        forkEvery = 1//为了减少用例之间的影响，每个进程只运行1个用例
+        beforeTest { descriptor ->
+            file("$project.rootDir/galileo_unit_log.txt").append("\nRunning test start: "
+                    + new Date().getTime() + descriptor)
+            logger.lifecycle("Running test: " + descriptor)
+        }
+        afterTest { descriptor, event ->
+            file("$project.rootDir/galileo_unit_log.txt").append("\nRunning test end: "
+                    + new Date().getTime() + descriptor + "\nevent: " + event)
+            logger.lifecycle("Running test: " + descriptor)
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true //df 模块可能需要显式配置为false
+            returnDefaultValues = true
+        }
+    }
+}
+
+
+//下方是jmockit环境变量配置，否则蓝盾找不到jmockit环境
+String timerPath = project.getProjectDir().getAbsolutePath() + "/src/test/resources/TimerTool.jar"
+def outputJarPath = project.getProjectDir().getAbsolutePath() + "/src/test/resources/qmock.jar"
+
+project.afterEvaluate {
+    project.android.unitTestVariants?.all { variant ->
+        variant.registerPostJavacGeneratedBytecode(project.files(outputJarPath))
+        println('unitTestVariants registerPostJavacGeneratedBytecode!!!*******************')
+    }
+
+    def android = project.extensions.findByName("android")
+    if (android != null) {
+        project.gradle.taskGraph.whenReady {
+            project.tasks.withType(Test) { task ->
+                if (null != task) {
+                    task.doFirst {
+                        if (project.hasProperty("enableTimer")
+                                && getProperty("enableTimer") == "true") {
+                            if (project.hasProperty("threshold")) {
+                                threshold = getProperty("threshold")
+                                if (!timerPath.contains(threshold)) {
+                                    timerPath = timerPath + "=" + threshold
+                                }
+                            }//这里有bug，千万不要直接用 =，要用+=，否则会被覆盖
+                            task.jvmArgs += ["-javaagent:${timerPath}", "-javaagent:${classpath.find { it.name.contains("jmockit") }.absolutePath}"]
+                        } else {
+                            task.jvmArgs += ["-javaagent:${classpath.find { it.name.contains("jmockit") }.absolutePath}"]
+                        }
+                        println("lahmlong-jvm:" + getAllJvmArgs() + " minHeap:" + getMinHeapSize() + " maxHeap:" + getMaxHeapSize() + " workingDir:" + getWorkingDir())
+                    }
+                }
+            }
+        }
+    }
+}

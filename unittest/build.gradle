@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply from: "${project.rootProject.projectDir}/gradle/test/test-dependencies.gradle"//测试库依赖配置
+apply plugin: 'kotlin-android'
+//apply plugin: 'robolectric'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc4'
+
+    compileOnly 'junit:junit:4.12'
+    compileOnly "org.robolectric:robolectric:4.3.1"
+    compileOnly "org.mockito:mockito-core:2.28.2"
+    compileOnly group: 'org.jmockit', name: 'jmockit', version: '1.49'
+
+}
