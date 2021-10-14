@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <View
+    android:id="@+id/shapeTestView"
+    android:layout_width="@dimen/dp190"
+    android:layout_height="@dimen/dp130"
+    android:background="@drawable/guild_yolo_team_card_bg" />
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvShape"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp150">
+
+  </androidx.recyclerview.widget.RecyclerView>
+  <TextView
+    android:id="@+id/tvInfo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|right" />
+  <Button
+    android:id="@+id/btnNext"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:text="下一个" />
+</FrameLayout>

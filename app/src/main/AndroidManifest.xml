@@ -109,6 +109,9 @@
     </activity>
     <activity android:name=".constraintlayout.RecyclerViewInConstraintActivity">
 
+    </activity>
+    <activity android:name=".shape.ShapeTestActivity">
+
 
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
