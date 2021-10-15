@@ -42,7 +42,6 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity android:name=".fragment.FragmentTestActivity"></activity>
-    <activity android:name=".popup.PopupFragmentActivity" />
     <activity android:name=".broadcast.BroadcastTestActivity"></activity>
     <activity android:name="com.rainfool.dex.DexLoaderTestActivity" />
     <activity android:name=".skin.SkinDemoActivity" />
@@ -112,6 +111,15 @@
     </activity>
     <activity android:name=".shape.ShapeTestActivity">
 
+
+    </activity>
+    <activity
+      android:name="com.rainfool.ipc.IPCSubProcessActivity"
+      android:process="com.rainfool.rain">
+
+    </activity>
+    <activity
+      android:name="com.rainfool.ipc.IPCMainProcessActivity">
 
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

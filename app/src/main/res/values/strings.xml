@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">app</string>
-    <string name="status_progress_count_down_format">%s小时%s分钟%s秒%s 后将自动完成</string>
+  <string name="app_name">app</string>
+  <string name="status_progress_count_down_format">%s小时%s分钟%s秒%s 后将自动完成</string>
 
-    <string-array name="node_status_array">
-        <item>待确定</item>
-        <item>待服务</item>
-        <item>进行中</item>
-        <item>已完成</item>
-    </string-array>
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string-array name="node_status_array">
+    <item>待确定</item>
+    <item>待服务</item>
+    <item>进行中</item>
+    <item>已完成</item>
+  </string-array>
 </resources>
