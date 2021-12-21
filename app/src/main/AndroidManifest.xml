@@ -2,6 +2,95 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.rainfool.md">
 
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:name=".BaseApp"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".fragment.FragmentTestActivity" />
+
+    <activity android:name=".broadcast.BroadcastTestActivity" />
+    <activity android:name="com.rainfool.dex.DexLoaderTestActivity" />
+    <activity android:name=".skin.SkinDemoActivity" />
+    <activity android:name=".crop.CropImageDemoActivity" />
+    <activity android:name=".recyclerview.HorizontalRecyclerViewActivity"></activity>
+    <activity android:name=".MainActivity" />
+    <activity
+      android:name=".immersion.ImmersionActivity"
+      android:screenOrientation="portrait"
+      android:windowSoftInputMode="stateHidden|adjustResize" />
+    <activity android:name=".spannable.SpnnableTestActivity" />
+    <activity android:name=".notifycation.NotificationTestActivity" />
+    <activity android:name=".coordinator.CoordinatorWithFabActivity" />
+    <activity android:name=".popup.PopupTestActivity" />
+    <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
+    <activity android:name=".recyclerview.ReverseRecyclerActivity" />
+    <activity
+      android:name=".softinput.SoftInputTestActivity"
+      android:screenOrientation="portrait"
+      android:windowSoftInputMode="stateHidden|adjustNothing" >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:name=".chat.ChatDemoActivity"
+      android:windowSoftInputMode="adjustResize" />
+    <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
+    <activity
+      android:name=".immersion.FullScreenActivity"
+      android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen" />
+    <activity android:name=".push.OpenPermisionSettingActivity" />
+    <activity android:name=".imagelibrary.FrescoTestActivity" />
+    <activity android:name=".viewpager.ViewPagerEffectActivity" />
+    <activity android:name=".coordinator.CoordinatorDispatchActivity" />
+    <activity android:name=".coordinator.CoordinatorAppbarActivity" />
+    <activity android:name=".password.PasswordActivity" />
+    <activity
+      android:hardwareAccelerated="false"
+      android:launchMode="singleTask"
+      android:name=".dialogfragment.DialogFragmentTestActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionbar.Kiwi" />
+    <activity android:name=".toast.ToastDemoActivity" />
+    <activity android:name=".anotations.AnotationActivity" />
+    <activity android:name=".coordinator.LogBehaviorActivity" />
+    <activity
+      android:configChanges="orientation|screenSize|keyboardHidden"
+      android:name=".avtivitystack.StackAActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/AdSplash"
+      android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+    <activity android:name=".avtivitystack.StackBActivity" />
+    <activity android:name=".avtivitystack.StackTestActivity" />
+    <activity android:name=".inflater.LayoutInflaterActivity" />
+    <activity
+      android:label="common pool"
+      android:name=".recyclerview.CommonRecyclerPoolActivity" />
+    <activity android:name=".service.StartServiceActivity" />
+    <activity android:name=".customview.StatusProgressActivity" />
+    <activity android:name=".textview.TextViewTestActivity" />
+    <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
+    <activity android:name=".drawing.DrawingCacheDemoActivity" />
+    <activity android:name=".fakenotification.FakeNotificationDemoActivity"></activity>
+    <activity android:name=".constraintlayout.RecyclerViewInConstraintActivity"></activity>
+    <activity android:name=".shape.ShapeTestActivity"></activity>
+    <activity
+      android:name="com.rainfool.ipc.IPCSubProcessActivity"
+      android:process="com.rainfool.rain"></activity>
+    <activity android:name="com.rainfool.ipc.IPCMainProcessActivity">
+
+    </activity>
+    <service
+      android:enabled="true"
+      android:exported="true"
+      android:name="com.rainfool.ipc.SubProcessService"></service>
+  </application>
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -17,116 +106,21 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.BROADCAST_STICKY" />
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  <uses-permission android:name="android.permission.READ_SMS" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 这个权限用于进行网络定位 -->
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- bugly require this permission -->
-  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.READ_SMS" /> <!-- 这个权限用于进行网络定位 -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- bugly require this permission -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- dream wifi -->
   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- dream wifi -->
-  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- dream wifi -->
   <!-- shortcut -->
-  <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-  <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" /> <!-- zxing -->
+  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> <!-- zxing -->
+  <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.FLASHLIGHT" />
-  <uses-permission android:name="android.permission.READ_CALENDAR" />
-  <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- sync adapter -->
+  <uses-permission android:name="android.permission.READ_CALENDAR" /> <!-- sync adapter -->
+  <uses-permission android:name="android.permission.WRITE_CALENDAR" />
   <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
   <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-
-  <application
-    android:name=".BaseApp"
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity android:name=".fragment.FragmentTestActivity"></activity>
-    <activity android:name=".broadcast.BroadcastTestActivity"></activity>
-    <activity android:name="com.rainfool.dex.DexLoaderTestActivity" />
-    <activity android:name=".skin.SkinDemoActivity" />
-    <activity android:name=".crop.CropImageDemoActivity" />
-    <activity android:name=".recyclerview.HorizontalRecyclerViewActivity">
-
-    </activity>
-    <activity android:name=".MainActivity" />
-    <activity
-      android:name=".immersion.ImmersionActivity"
-      android:screenOrientation="portrait"
-      android:windowSoftInputMode="stateHidden|adjustResize" />
-    <activity android:name=".spannable.SpnnableTestActivity" />
-    <activity android:name=".notifycation.NotificationTestActivity" />
-    <activity android:name=".coordinator.CoordinatorWithFabActivity" />
-    <activity android:name=".popup.PopupTestActivity"></activity>
-    <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
-    <activity android:name=".recyclerview.ReverseRecyclerActivity" />
-    <activity
-      android:name=".softinput.SoftInputTestActivity"
-      android:screenOrientation="portrait"
-      android:windowSoftInputMode="stateHidden|adjustResize" />
-    <activity
-      android:name=".chat.ChatDemoActivity"
-      android:windowSoftInputMode="adjustResize" />
-    <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
-    <activity
-      android:name=".immersion.FullScreenActivity"
-      android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen" />
-    <activity android:name=".push.OpenPermisionSettingActivity" />
-    <activity android:name=".imagelibrary.FrescoTestActivity" />
-    <activity android:name=".viewpager.ViewPagerEffectActivity" />
-    <activity android:name=".coordinator.CoordinatorDispatchActivity" />
-    <activity android:name=".coordinator.CoordinatorAppbarActivity" />
-    <activity android:name=".password.PasswordActivity" />
-    <activity
-      android:name=".dialogfragment.DialogFragmentTestActivity"
-      android:hardwareAccelerated="false"
-      android:launchMode="singleTask"
-      android:screenOrientation="portrait"
-      android:theme="@style/Theme.AppCompat.Light.NoActionbar.Kiwi"></activity>
-    <activity android:name=".toast.ToastDemoActivity" />
-    <activity android:name=".anotations.AnotationActivity" />
-    <activity android:name=".coordinator.LogBehaviorActivity" />
-    <activity
-      android:name=".avtivitystack.StackAActivity"
-      android:configChanges="orientation|screenSize|keyboardHidden"
-      android:screenOrientation="portrait"
-      android:theme="@style/AdSplash"
-      android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-    <activity android:name=".avtivitystack.StackBActivity" />
-    <activity android:name=".avtivitystack.StackTestActivity" />
-    <activity android:name=".inflater.LayoutInflaterActivity" />
-    <activity
-      android:name=".recyclerview.CommonRecyclerPoolActivity"
-      android:label="common pool" />
-    <activity android:name=".service.StartServiceActivity" />
-    <activity android:name=".customview.StatusProgressActivity" />
-    <activity android:name=".textview.TextViewTestActivity" />
-    <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
-    <activity android:name=".drawing.DrawingCacheDemoActivity" />
-    <activity android:name=".fakenotification.FakeNotificationDemoActivity">
-
-    </activity>
-    <activity android:name=".constraintlayout.RecyclerViewInConstraintActivity">
-
-    </activity>
-    <activity android:name=".shape.ShapeTestActivity">
-
-
-    </activity>
-    <activity
-      android:name="com.rainfool.ipc.IPCSubProcessActivity"
-      android:process="com.rainfool.rain">
-
-    </activity>
-    <activity
-      android:name="com.rainfool.ipc.IPCMainProcessActivity">
-
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-  </application>
 
 </manifest>

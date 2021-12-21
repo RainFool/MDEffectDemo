@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingTop="12dp"
+  android:paddingBottom="12dp"
+  android:id="@+id/inputLayout"
+  android:background="#0B0820"
+  android:orientation="horizontal">
+
+  <EditText
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="12dp"
+    android:id="@+id/input_et"
+    android:layout_width="0dp"
+    android:paddingLeft="16dp"
+    android:maxHeight="120dp"
+    android:minHeight="36dp"
+    android:layout_gravity="bottom"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="16dp"
+    android:textColor="#FFFFFF"
+    android:hint="说点什么..."
+    android:textColorHint="#33FFFFFF"
+    android:includeFontPadding="false"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="14dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/emoji_iv" />
+
+  <TextView
+    android:id="@+id/send_tv"
+    android:layout_width="60dp"
+    android:gravity="center"
+    android:layout_height="30dp"
+    android:layout_gravity="bottom"
+    android:includeFontPadding="false"
+    android:text="发送"
+    android:layout_marginBottom="3dp"
+    tools:visibility="visible"
+    android:textSize="14dp"
+    android:layout_marginRight="16dp"
+    app:layout_constraintBottom_toBottomOf="@+id/input_et"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+  <ImageView
+    android:id="@+id/emoji_iv"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="5dp"
+    android:layout_width="26dp"
+    android:layout_height="26dp"
+    android:src="@drawable/knife"
+    app:layout_constraintEnd_toStartOf="@+id/send_tv"
+    app:layout_constraintBottom_toBottomOf="@+id/input_et" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

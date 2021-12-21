@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.rainfool.md.softinput.SoftInputTestActivity">
 
-    <EditText
+    <com.tencent.mobileqq.partyhouse.im.input.NormalInputView
         android:id="@+id/et_input"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark"/>
 
