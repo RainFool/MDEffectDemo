@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="false"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fitsSystemWindows="true"
+  tools:context="com.rainfool.md.softinput.SoftInputTestActivity">
+
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rainfool.md.softinput.SoftInputTestActivity">
-
-    <com.tencent.mobileqq.partyhouse.im.input.NormalInputView
-        android:id="@+id/et_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"/>
+    android:orientation="vertical"
+    android:fitsSystemWindows="false">
 
     <ListView
-        android:id="@+id/lv_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        android:layout_above="@+id/et_input"></ListView>
+      android:id="@+id/lv_content"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/colorAccent"
+      android:layout_above="@+id/et_input"></ListView>
 
-</RelativeLayout>
+    <com.tencent.mobileqq.partyhouse.im.input.NormalInputView
+      android:id="@+id/et_input"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:fitsSystemWindows="false"
+      android:background="@color/colorPrimaryDark" />
+
+  </RelativeLayout>
+
+
+</FrameLayout>
