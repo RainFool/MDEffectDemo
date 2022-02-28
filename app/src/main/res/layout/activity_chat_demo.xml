@@ -1,47 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context="com.rainfool.md.chat.ChatDemoActivity">
+
+  <FrameLayout
+    android:id="@+id/topArea"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.rainfool.md.chat.ChatDemoActivity">
+    android:layout_height="@dimen/dp40"
+    android:background="@color/color_aaaaaa" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></FrameLayout>
+  <com.rainfool.md.chat.ChatRecyclerView
+    android:id="@+id/chatListView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:paddingBottom="@dimen/dp16">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+  </com.rainfool.md.chat.ChatRecyclerView>
 
-        <EditText
-            android:id="@+id/edt_input"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:focusable="true"
-            android:focusableInTouchMode="true" />
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/iv_switch"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher" />
-    </LinearLayout>
+    <EditText
+      android:id="@+id/edt_input"
+      android:layout_width="0dp"
+      android:layout_height="40dp"
+      android:layout_weight="1"
+      android:focusable="true"
+      android:focusableInTouchMode="true" />
 
-    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
-        android:id="@+id/panel"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorPrimaryDark">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:visibility="gone" />
-    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>
+    <ImageButton
+      android:id="@+id/iv_switch"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:src="@mipmap/ic_launcher" />
+  </LinearLayout>
 
 </cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

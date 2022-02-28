@@ -32,15 +32,17 @@
       android:name=".softinput.SoftInputTestActivity"
       android:screenOrientation="portrait"
       android:windowSoftInputMode="stateHidden|adjustResize" >
+
+    </activity>
+    <activity
+      android:name=".chat.ChatDemoActivity"
+      android:windowSoftInputMode="adjustResize" >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity
-      android:name=".chat.ChatDemoActivity"
-      android:windowSoftInputMode="adjustResize" />
     <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
     <activity
       android:name=".immersion.FullScreenActivity"
