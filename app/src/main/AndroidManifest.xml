@@ -26,7 +26,9 @@
     <activity android:name=".notifycation.NotificationTestActivity" />
     <activity android:name=".coordinator.CoordinatorWithFabActivity" />
     <activity android:name=".popup.PopupTestActivity" />
-    <activity android:name=".recyclerview.RecyclerViewDemoActivity" />
+    <activity android:name=".recyclerview.RecyclerViewDemoActivity" >
+
+    </activity>
     <activity android:name=".recyclerview.ReverseRecyclerActivity" />
     <activity
       android:name=".softinput.SoftInputTestActivity"
@@ -37,11 +39,6 @@
     <activity
       android:name=".chat.ChatDemoActivity"
       android:windowSoftInputMode="adjustResize" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
     </activity>
     <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
     <activity
@@ -87,6 +84,13 @@
       android:process="com.rainfool.rain"></activity>
     <activity android:name="com.rainfool.ipc.IPCMainProcessActivity">
 
+    </activity>
+    <activity android:name=".recyclerview.DragRecyclerActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
     </activity>
     <service
       android:enabled="true"
