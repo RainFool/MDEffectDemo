@@ -66,6 +66,9 @@ dependencies {
     implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") {
         changing = true
     }
+
+    api "android.arch.persistence.room:runtime:1.1.1"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
 }
 
 apply from: "${project.rootProject.projectDir}/gradle/test/test-deps.gradle"
