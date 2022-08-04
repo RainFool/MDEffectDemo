@@ -65,11 +65,7 @@
         <activity android:name=".avtivitystack.StackBActivity" />
         <activity android:name=".avtivitystack.StackTestActivity"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".inflater.LayoutInflaterActivity" />
         <activity
@@ -90,6 +86,14 @@
         <activity android:name=".recyclerview.DragRecyclerActivity"></activity>
         <activity android:name=".room.RoomTestActivity">
 
+        </activity>
+        <activity android:name=".systemui.SystemUiLaunchActivity"
+            android:theme="@style/StartUpTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <service
