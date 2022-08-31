@@ -1,0 +1,2 @@
+-blockpackage com/google/gson
+-blockpackage com/alibaba
