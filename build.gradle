@@ -29,7 +29,6 @@ buildscript {
         // TinkerPatch 插件
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:1.2.13.3"
         classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.4.1'
-        classpath 'com.bytedance.btrace:rhea-gradle-plugin:1.0.1'
 
     }
 }

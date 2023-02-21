@@ -1,14 +1,27 @@
 package com.rainfool.md.nestscroll;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rainfool.md.R;
+import com.rainfool.md.recyclerview.GalleryLayoutManager;
 import com.rainfool.md.recyclerview.SimpleNumberAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author rainfool
@@ -17,7 +30,7 @@ public class RecyclerViewInScrollViewActivity extends AppCompatActivity {
 
     Button mDisableButton, mEnableButton;
     LockableScrollView mScrollView;
-    RecyclerView mRecyclerView;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +38,7 @@ public class RecyclerViewInScrollViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_in_scroll_view);
 
         initViews();
-        setupRecyclerView();
+        setupViewPager();
         setupButtons();
     }
 
@@ -33,12 +46,53 @@ public class RecyclerViewInScrollViewActivity extends AppCompatActivity {
         mDisableButton = findViewById(R.id.btn_disable_scrolling);
         mEnableButton = findViewById(R.id.btn_enable_scrolling);
         mScrollView = findViewById(R.id.sv_container);
-        mRecyclerView = findViewById(R.id.rv_recycler_in_scroll);
+        viewPager = findViewById(R.id.view_pager);
     }
 
-    private void setupRecyclerView() {
-        mRecyclerView.setAdapter(new SimpleNumberAdapter(50));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    private void setupViewPager() {
+        List<Integer> colorList = new ArrayList<>();
+        colorList.add(R.color.app_color);
+        colorList.add(R.color.cardview_dark_background);
+        colorList.add(R.color.colorAccent);
+
+        viewPager.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+                return view == object;
+            }
+
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                LayoutInflater inflater = LayoutInflater.from(container.getContext());
+                View view = inflater.inflate(R.layout.view_recycler_view_in_scroll_view_inner, container, false);
+                View headView = view.findViewById(R.id.head_in_scroll);
+                headView.setBackgroundResource(colorList.get(position));
+                RecyclerView recyclerView = view.findViewById(R.id.rv_recycler_in_scroll);
+                setupRecyclerView(recyclerView);
+                container.addView(view);
+                return view;
+            }
+
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+                container.removeView((View) object);
+            }
+        });
+    }
+
+    private void setupRecyclerView(RecyclerView recyclerView) {
+//        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        recyclerView.setAdapter(new SimpleNumberAdapter(1000));
+        recyclerView.scrollToPosition(500);
+        GalleryLayoutManager galleryLayoutManager = new GalleryLayoutManager(RecyclerView.HORIZONTAL);
+        galleryLayoutManager.attach(recyclerView);
+        galleryLayoutManager.setOverlap(0.5F);
     }
 
     private void setupButtons() {

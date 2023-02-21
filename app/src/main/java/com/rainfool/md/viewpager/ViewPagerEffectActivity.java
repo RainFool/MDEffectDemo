@@ -3,6 +3,9 @@ package com.rainfool.md.viewpager;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rainfool.md.R;
+import com.rainfool.md.recyclerview.SimpleNumberAdapter;
 
 public class ViewPagerEffectActivity extends AppCompatActivity {
 
@@ -36,7 +40,7 @@ public class ViewPagerEffectActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
-            return 3;
+            return 10;
         }
 
         @Override
@@ -49,6 +53,9 @@ public class ViewPagerEffectActivity extends AppCompatActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             LayoutInflater inflater = LayoutInflater.from(container.getContext());
             View view = inflater.inflate(R.layout.view_pager_item, container, false);
+            RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+            recyclerView.setAdapter(new SimpleNumberAdapter(100));
+            recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
             container.addView(view);
             return view;
         }

@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.bytedance.rhea-trace'
 //apply plugin: 'hook'
 //apply from: 'tinkerpatch.gradle'
 //apply plugin: 'com.jakewharton.hugo'
@@ -36,27 +35,6 @@ android {
 
 }
 
-rheaTrace {
-
-    compilation {
-        //为减少 APK 体积, 你可以为 App 中需要跟踪的方法设置 id 以此来跟踪此自定义事件, 默认值 false。
-        traceWithMethodID = false
-        //该文件配置决定哪些方法您不希望跟踪, 默认值 null。
-        traceFilterFilePath = "${project.rootDir}/rhea-trace/traceFilter.txt"
-        //用特指定方法 id 来设置自定义事件名称, 默认值 null。
-        applyMethodMappingFilePath = "${project.rootDir}/rhea-trace/keep-method-id.txt"
-    }
-
-    runtime {
-        //仅在主线程抓取跟踪事件, 默认值 false。
-        mainThreadOnly true
-        //在 App 启动之初开始抓取跟踪事件, 默认值 true。
-        startWhenAppLaunch true
-        //指定内存存储 atrace 数据 ring buffer 的大小。
-        atraceBufferSize "500000"
-    }
-}
-
 dependencies {
 
     testImplementation project(":unittest")
@@ -68,6 +46,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-6'
     implementation 'androidx.tracing:tracing:1.1.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.cardview:cardview:1.0.0'

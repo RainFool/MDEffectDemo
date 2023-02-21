@@ -6,33 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.rainfool.md.nestscroll.RecyclerViewInScrollViewActivity">
 
-    <com.rainfool.md.nestscroll.LockableScrollView
-        android:id="@+id/sv_container"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <FrameLayout
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/colorPrimaryDark" />
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_recycler_in_scroll"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="@dimen/dp200"
+                android:background="#f00">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/colorAccent" />
-        </LinearLayout>
-
-    </com.rainfool.md.nestscroll.LockableScrollView>
+            </com.google.android.material.appbar.AppBarLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <Button
         android:id="@+id/btn_disable_scrolling"
