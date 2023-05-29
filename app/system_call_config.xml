@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <List>
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/telephony/TelephonyManager"-->
+<!--          name="getImei"-->
+<!--          desc="()Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getImei"-->
+<!--          newDesc="(Landroid/telephony/TelephonyManager;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/telephony/TelephonyManager"-->
+<!--          name="getImei"-->
+<!--          desc="(I)Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getImei"-->
+<!--          newDesc="(Landroid/telephony/TelephonyManager;I)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/telephony/TelephonyManager"-->
+<!--          name="getDeviceId"-->
+<!--          desc="()Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getDeviceId"-->
+<!--          newDesc="(Landroid/telephony/TelephonyManager;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/telephony/TelephonyManager"-->
+<!--          name="getLine1Number"-->
+<!--          desc="()Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getLine1Number"-->
+<!--          newDesc="(Landroid/telephony/TelephonyManager;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/telephony/TelephonyManager"-->
+<!--          name="getSubscriberId"-->
+<!--          desc="()Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getSubscriberId"-->
+<!--          newDesc="(Landroid/telephony/TelephonyManager;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="android/net/wifi/WifiInfo"-->
+<!--          name="getMacAddress"-->
+<!--          desc="()Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getMacAddress"-->
+<!--          newDesc="(Landroid/net/wifi/WifiInfo;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="182"-->
+<!--          owner="java/net/NetworkInterface"-->
+<!--          name="getHardwareAddress"-->
+<!--          desc="()[B"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getHardwareAddress"-->
+<!--          newDesc="(Ljava/net/NetworkInterface;)[B" />-->
+<!--        <ConfigEntity-->
+<!--          code="184"-->
+<!--          owner="android/provider/Settings${'$'}System"-->
+<!--          name="getString"-->
+<!--          desc="(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/cymini/systemhook/Settings"-->
+<!--          newName="getString"-->
+<!--          newDesc="(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="184"-->
+<!--          owner="android/provider/Settings${'$'}Secure"-->
+<!--          name="getString"-->
+<!--          desc="(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/cymini/systemhook/Settings"-->
+<!--          newName="getString"-->
+<!--          newDesc="(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="178"-->
+<!--          owner="android/os/Build"-->
+<!--          name="MODEL"-->
+<!--          desc="Ljava/lang/String;"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="getModel"-->
+<!--          newDesc="()Ljava/lang/String;" />-->
+<!--        <ConfigEntity-->
+<!--          code="184"-->
+<!--          owner="androidx/core/app/ActivityCompat"-->
+<!--          name="requestPermissions"-->
+<!--          desc="(Landroid/app/Activity;[Ljava/lang/String;I)V"-->
+<!--          newOwner="com/tencent/systemhook/privacy/PrivacyUtils"-->
+<!--          newName="requestPermissions"-->
+<!--          newDesc="(Landroid/app/Activity;[Ljava/lang/String;I)V" />-->
+        <ConfigEntity
+            code="184"
+            owner="com/facebook/react/bridge/ColorPropConverter"
+            name="getColor"
+            desc="(Ljava/lang/Object;Landroid/content/Context;)Ljava/lang/Integer;"
+            newOwner="Lcom/tencent/common/rn/RNHook"
+            newName="getColor"
+            newDesc="(Ljava/lang/Object;Landroid/content/Context;)Ljava/lang/Integer;"
+        />
+
+    </List>
+</resources>

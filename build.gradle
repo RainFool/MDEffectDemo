@@ -22,6 +22,7 @@ buildscript {
         maven{
             url 'https://mirrors.tencent.com/nexus/repository/gradle-plugins'
         }
+        maven { url "https://mirrors.tencent.com/repository/maven/system-hook" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
@@ -29,6 +30,7 @@ buildscript {
         // TinkerPatch 插件
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:1.2.13.3"
         classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.4.1'
+        classpath 'com.tencent.systemhook:system-hook-gradle-plugin:0.1.1' // system hook 插件依赖
 
     }
 }

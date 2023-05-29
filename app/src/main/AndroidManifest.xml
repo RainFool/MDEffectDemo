@@ -40,11 +40,6 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".immersion.FullScreenActivity"
@@ -84,7 +79,14 @@
             android:label="common pool" />
         <activity android:name=".service.StartServiceActivity" />
         <activity android:name=".customview.StatusProgressActivity" />
-        <activity android:name=".textview.TextViewTestActivity" />
+        <activity android:name=".textview.TextViewTestActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
         <activity android:name=".drawing.DrawingCacheDemoActivity" />
         <activity android:name=".fakenotification.FakeNotificationDemoActivity" />
