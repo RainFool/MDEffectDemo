@@ -4,3 +4,4 @@ plugins {
 include ':app', ':anotation', ':processor', ':skinengine', ':dexloader','unittest'
 
 
+include ':spannable'

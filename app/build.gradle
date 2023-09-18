@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.facebook.fresco:animated-base-support:1.0.0'
     implementation project(':anotation')
     implementation project(':skinengine')
+    implementation project(':spannable')
     implementation project(':dexloader')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation project(path: ':app')
