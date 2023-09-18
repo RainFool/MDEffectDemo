@@ -22,4 +22,12 @@
         <attr name="curStep" format="integer" />  <!-- 当前所到达的节点编号  0开始计算-->
         <attr name="isDebugMode" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="CollapsibleTextView">
+        <attr name="suffixColor" format="color"/>
+        <attr name="collapsedLines" format="integer"/>
+        <attr name="collapsedText" format="string"/>
+        <attr name="expandedText" format="string"/>
+        <attr name="suffixTrigger" format="boolean"/>
+    </declare-styleable>
 </resources>

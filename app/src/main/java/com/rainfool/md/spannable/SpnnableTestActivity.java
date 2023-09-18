@@ -24,6 +24,7 @@ public class SpnnableTestActivity extends AppCompatActivity {
     Button mSpannableButton;
     EditText mEditText;
     TextView mTextView;
+    CollapsibleTextView collapsibleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class SpnnableTestActivity extends AppCompatActivity {
         mEditText = (EditText) findViewById(R.id.et_input);
         mSpannableButton = (Button) findViewById(R.id.btn_spannable);
         mTextView = findViewById(R.id.tv_spannable_test);
-
+        renderCollapsible();
         SpannableStringBuilder span = new SpannableStringBuilder(mTextView.getText().toString());
         span.setSpan(new CustomClickableSpan(ContextCompat.getColor(this, R.color.color_aaaaaa), getResources().getColor(R.color.cardview_dark_background), false) {
             @Override
@@ -48,6 +49,12 @@ public class SpnnableTestActivity extends AppCompatActivity {
                 spanText("test");
             }
         });
+
+    }
+
+    private void renderCollapsible() {
+        collapsibleTextView = findViewById(R.id.comment_text_trend_content);
+        collapsibleTextView.setCollapsedText("tttttt");
     }
 
     private void spanText(String s) {

@@ -42,6 +42,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StackOpenPipActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".HuyaUdbTestActivity"
             android:exported="false"
             android:label="@string/title_activity_huya_udb_test"
@@ -63,7 +70,14 @@
             android:name=".immersion.ImmersionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".spannable.SpnnableTestActivity" />
+        <activity android:name=".spannable.SpnnableTestActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorWithFabActivity" />
         <activity android:name=".popup.PopupTestActivity" />
@@ -105,6 +119,8 @@
         <activity
             android:name=".avtivitystack.StackTestActivity"
             android:launchMode="singleTop" />
+        <activity android:name=".avtivitystack.StackOpenPipActivity">
+        </activity>
         <activity android:name=".inflater.LayoutInflaterActivity" />
         <activity
             android:name=".recyclerview.CommonRecyclerPoolActivity"
@@ -112,15 +128,9 @@
         <activity android:name=".service.StartServiceActivity" />
         <activity android:name=".customview.StatusProgressActivity" />
         <activity android:name=".textview.TextViewTestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".textview.HuyaUdbTestActivity">
 
         </activity>
+        <activity android:name=".textview.HuyaUdbTestActivity"></activity>
         <activity android:name="com.rainfool.kotlin.coroutines.CoroutinesDemoActivity" />
         <activity android:name=".drawing.DrawingCacheDemoActivity" />
         <activity android:name=".fakenotification.FakeNotificationDemoActivity" />
