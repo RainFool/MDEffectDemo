@@ -16,6 +16,16 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+
+    flavorDimensions "version"
+
+    productFlavors {
+        app {
+        }
+        val {
+        }
+    }
+
 }
 
 dependencies {

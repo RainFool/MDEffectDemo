@@ -35,6 +35,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    flavorDimensions "version"
+
+    productFlavors {
+        app {
+
+        }
+        val {
+        }
+    }
+
 //    buildTypes {
 //        release {
 //            minifyEnabled false
