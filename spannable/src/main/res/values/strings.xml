@@ -1,3 +1,4 @@
 <resources>
-    <string name="test_name">test app</string>
+    <string name="common_flavor_name">Common String in Main</string>
+    <string name="flavor_name">String in app</string>
 </resources>
