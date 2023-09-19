@@ -47,15 +47,29 @@
         android:layout_height="30dp"
         android:layout_marginTop="32dp"
         android:background="@color/common_color"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         tools:layout_editor_absoluteX="46dp" />
 
     <View
+        android:id="@+id/view2"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginStart="140dp"
         android:background="@color/flavor_color"
         app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        tools:layout_editor_absoluteX="142dp" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="264dp"
+        android:background="@drawable/flavor_card"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
