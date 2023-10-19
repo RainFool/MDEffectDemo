@@ -58,13 +58,8 @@
                 android:value="" />
         </activity>
         <activity android:name="com.rainfool.json.JsonTestActivity" />
-        <activity android:name=".constraintlayout.TestConstraintActivity" >
+        <activity android:name=".constraintlayout.TestConstraintActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".fragment.FragmentTestActivity" />
         <activity android:name=".broadcast.BroadcastTestActivity" />
@@ -77,9 +72,9 @@
             android:name=".immersion.ImmersionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-<!--        <activity android:name=".spannable.SpnnableTestActivity" >-->
+        <!--        <activity android:name=".spannable.SpnnableTestActivity" >-->
 
-<!--        </activity>-->
+        <!--        </activity>-->
 
         <activity android:name=".notifycation.NotificationTestActivity" />
         <activity android:name=".coordinator.CoordinatorWithFabActivity" />
@@ -93,7 +88,14 @@
         <activity
             android:name=".chat.ChatDemoActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity" />
+        <activity android:name=".nestscroll.RecyclerViewInScrollViewActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".immersion.FullScreenActivity"
             android:theme="@style/Theme.Holo.Light.Kiwi.NoActionBar.FullScreen" />
@@ -122,8 +124,7 @@
         <activity
             android:name=".avtivitystack.StackTestActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".avtivitystack.StackOpenPipActivity">
-        </activity>
+        <activity android:name=".avtivitystack.StackOpenPipActivity"></activity>
         <activity android:name=".inflater.LayoutInflaterActivity" />
         <activity
             android:name=".recyclerview.CommonRecyclerPoolActivity"

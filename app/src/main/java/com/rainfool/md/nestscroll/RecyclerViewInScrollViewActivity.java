@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ import java.util.List;
  * @author rainfool
  */
 public class RecyclerViewInScrollViewActivity extends AppCompatActivity {
+
+    private static final String TAG = "RecyclerViewInScrollVie";
 
     Button mDisableButton, mEnableButton;
     LockableScrollView mScrollView;
@@ -91,8 +94,21 @@ public class RecyclerViewInScrollViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleNumberAdapter(1000));
         recyclerView.scrollToPosition(500);
         GalleryLayoutManager galleryLayoutManager = new GalleryLayoutManager(RecyclerView.HORIZONTAL);
+        galleryLayoutManager.setItemTransformer(new GalleryLayoutManager.ItemTransformer() {
+            @Override
+            public void transformItem(GalleryLayoutManager layoutManager, View item, float fraction) {
+                int r = 600;
+                double radians = Math.toRadians(fraction * 45);
+                Log.i(TAG, "transformItem: fraction = " + fraction + " radians = " + radians);
+                int translateY = (int) (r - r * Math.cos(radians));
+                item.setTranslationY(translateY);
+                int translateX = (int) (r * Math.sin(radians) - item.getWidth() * fraction);
+                item.setTranslationX(translateX);
+                item.setRotation(fraction * 45);
+            }
+        });
         galleryLayoutManager.attach(recyclerView);
-        galleryLayoutManager.setOverlap(0.5F);
+        galleryLayoutManager.setOverlap(0);
     }
 
     private void setupButtons() {
