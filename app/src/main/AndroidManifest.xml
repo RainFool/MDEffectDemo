@@ -58,7 +58,14 @@
                 android:value="" />
         </activity>
         <activity android:name="com.rainfool.json.JsonTestActivity" />
-        <activity android:name=".constraintlayout.TestConstraintActivity" />
+        <activity android:name=".constraintlayout.TestConstraintActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".fragment.FragmentTestActivity" />
         <activity android:name=".broadcast.BroadcastTestActivity" />
         <activity android:name="com.rainfool.dex.DexLoaderTestActivity" />

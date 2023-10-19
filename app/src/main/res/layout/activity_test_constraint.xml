@@ -6,15 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".constraintlayout.TestConstraintActivity">
 
-    <TextView
-        android:id="@+id/video_interval"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="13dp"
-        android:includeFontPadding="false"
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#550042"
+        app:layout_constraintBottom_toTopOf="@id/view2"
+        android:onClick="onViewClick"/>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#990042"
+        app:layout_constraintBottom_toTopOf="@id/view3"
+        android:onClick="onViewClick"/>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#000011"
+        app:layout_constraintBottom_toTopOf="@id/view4"
+        android:onClick="onViewClick"/>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#000099"
+        app:layout_constraintBottom_toTopOf="@id/view5"
+        android:onClick="onViewClick"/>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#0ff00f"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="03:56" />
+        android:onClick="onViewClick"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
